@@ -45,7 +45,7 @@ img {
   max-width: none;
 }
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Roboto', arial, helvetica, sans-serif;
+  font-family: 'SolaimanLipi', sans-serif;
   margin-top: 0;
   font-weight: 300;
   color: #4d4d4d;
@@ -63,7 +63,7 @@ h5 {
 }
 body {
   color: #666;
-  font-family: 'Open Sans', Arial, helvetica, sans-serif;
+  font-family: 'SolaimanLipi', sans-serif;
   font-size: 14px;
 }
 a {
@@ -113,7 +113,7 @@ small {
 .title-hero {
   font-size: 200px;
   line-height: 200px;
-  font-family: 'Open Sans', Arial, helvetica, sans-serif;
+  font-family: 'SolaimanLipi', sans-serif;
   font-weight: bold;
 }
 .text-normal {
@@ -174,7 +174,7 @@ blockquote p {
   height: 37px;
   width: 37px;
   margin-right: 10px;
-  font-family: 'Roboto', arial, helvetica, sans-serif;
+  font-family: 'SolaimanLipi', arial, helvetica, sans-serif;
   font-weight: bold;
   display: block;
   text-align: center;
@@ -592,7 +592,7 @@ label {
   background: #2a8fbd;
   padding: 10px 0;
   overflow: hidden;
-  font-family: 'Roboto', arial, helvetica, sans-serif;
+  font-family: 'SolaimanLipi', arial, helvetica, sans-serif;
   font-weight: 300;
   margin-bottom: 0;
   -webkit-box-shadow: 0 3px 1px rgba(0,0,0,0.1);
@@ -600,7 +600,7 @@ label {
 }
 .search-area input {
   display: block;
-  font-family: 'Roboto', arial, helvetica, sans-serif;
+  font-family: 'SolaimanLipi', arial, helvetica, sans-serif;
   line-height: 30px;
   font-size: 19px;
   height: 30px;
@@ -1659,7 +1659,7 @@ label {
   margin: 0 0 5px 0;
   padding: 0 0 5px 0;
   border-bottom: 1px dashed #e6e6e6;
-  display: tabble;
+  display: table;
 }
 .post .post-meta li {
   display: inline-block;

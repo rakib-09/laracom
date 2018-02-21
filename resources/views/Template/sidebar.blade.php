@@ -1,5 +1,3 @@
-@extends('Template.master')
-@section('sidebar')
 <div class="col-md-3">
     <aside class="sidebar-left">
         <h3 class="mb20 text-center">I am looking for</h3>

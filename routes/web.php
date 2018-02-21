@@ -12,6 +12,6 @@
 */
 
 
-Route::get('/', function () {
+Route::get('/check', function () {
     return view('Template.top_area');
 });

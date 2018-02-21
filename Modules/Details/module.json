@@ -1,0 +1,16 @@
+{
+    "name": "Details",
+    "alias": "details",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Details\\Providers\\DetailsServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        "start.php"
+    ],
+    "requires": []
+}

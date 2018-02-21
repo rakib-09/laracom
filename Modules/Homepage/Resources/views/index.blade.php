@@ -1,5 +1,7 @@
 @extends('Template.master')
+@section('top_area')
 @include('Template.top_area')
+@endsection
 @section('content')
     <div class="row">
         @include('Template.sidebar')
@@ -476,5 +478,4 @@
     </div>
     <div class="gap gap-small"></div>
     </div>
-
 @endsection
