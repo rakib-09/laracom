@@ -1,7 +1,8 @@
 <div class="top-main-area text-center">
     <div class="container">
         <a href="index.html" class="logo mt5">
-            <img src="img/logo-small-dark.png" alt="Image Alternative text" title="Image Title" />
+            {{--<img src="img/logo-small-dark.png" alt="Image Alternative text" title="Image Title" />--}}
+            <h3>প্রফেসর'স পাবলিকেশন</h3>
         </a>
     </div>
 </div>

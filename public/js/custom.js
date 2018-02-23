@@ -341,10 +341,10 @@ $('.popup-image').magnificPopup({
     type: 'image'
 });
 
-$(window).load(function() {
-    if ($(window).width() > 992) {
-        $('#masonry').masonry({
-            itemSelector: '.col-masonry'
-        });
-    }
-});
+// $(window).load(function() {
+//     if ($(window).width() > 992) {
+//         $('#masonry').masonry({
+//             itemSelector: '.col-masonry'
+//         });
+//     }
+// });

@@ -1,1 +1,107 @@
 /*YOUR CUSTOM STYLES*/
+
+code div{
+    background-color: #f7ecb5;
+    margin: 2% 0;
+    box-shadow: 0px 0px 3px 3px grey;
+}
+.product_description p{
+    line-height: 1.5em;
+    font-size: 1.5em;
+    text-align: justify;
+
+}
+.product_description{
+    margin: 4% 10%;
+    border-bottom: 1px solid grey;
+}
+
+/*comment box for review*/
+
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    color: #ced2db;
+}
+input::-moz-placeholder, textarea::-moz-placeholder {
+    color: #ced2db;
+}
+input:-moz-placeholder, textarea:-moz-placeholder {
+    color: #ced2db;
+}
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+    color: #ced2db;
+}
+
+p {
+    line-height: 1.5em;
+}
+
+.comments {
+    margin: 2.5em auto 0;
+    padding: 0 1.25em;
+}
+
+.comment-wrap {
+    margin-bottom: 1.25em;
+    display: table;
+    width: 100%;
+    min-height: 5.3125em;
+}
+
+.photo {
+    padding-top: 0.625em;
+    display: table-cell;
+    width: 3.5em;
+}
+.photo .avatar {
+    height: 2.25em;
+    width: 2.25em;
+    border-radius: 50%;
+    background-size: contain;
+}
+
+.comment-block {
+    padding: 1rem;
+    background-color: #fff;
+    display: table-cell;
+    vertical-align: top;
+    border-radius: 0.1875em;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
+}
+.comment-block textarea {
+    width: 100%;
+    resize: none;
+}
+
+.comment-text {
+    margin-bottom: 1.25em;
+}
+
+.bottom-comment {
+    color: #acb4c2;
+    font-size: 0.875em;
+}
+
+.comment-date {
+    float: left;
+}
+
+.comment-actions {
+    float: right;
+}
+.comment-actions li {
+    display: inline;
+    margin: -2px;
+    cursor: pointer;
+}
+.comment-actions li.complain {
+    padding-right: 0.75em;
+    border-right: 1px solid #e1e5eb;
+}
+.comment-actions li.reply {
+    padding-left: 0.75em;
+    padding-right: 0.125em;
+}
+.comment-actions li:hover {
+    color: #0095ff;
+}
+/**/

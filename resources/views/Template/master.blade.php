@@ -9,7 +9,7 @@
     <meta name="author" content="Rakib">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Google fonts -->
-    <link href="https://fonts.maateen.me/solaiman-lipi/font.css" rel="stylesheet">
+    <link href="{{asset('css/solaimanLipi.css')}}" rel="stylesheet">
     <!-- Bootstrap styles -->
     <link rel="stylesheet" href="{{asset('css/boostrap.css')}}">
     <!-- Font Awesome styles (icons) -->
@@ -17,7 +17,6 @@
     <!-- Main Template styles -->
     <link rel="stylesheet" href="{{asset('css/styles.css')}}">
     <!-- IE 8 Fallback -->
-    <![endif]-->
 
     <!-- Your custom styles (blank file) -->
     <link rel="stylesheet" href="{{asset('css/mystyles.css')}}">

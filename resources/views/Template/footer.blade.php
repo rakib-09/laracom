@@ -38,12 +38,12 @@
                         </form>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <h4>Couponia on Twitter</h4>
-                    <!-- START TWITTER -->
-                    <div class="twitter-ticker" id="twitter-ticker"></div>
-                    <!-- END TWITTER -->
-                </div>
+                {{--<div class="col-md-3">--}}
+                    {{--<h4>Couponia on Twitter</h4>--}}
+                    {{--<!-- START TWITTER -->--}}
+                    {{--<div class="twitter-ticker" id="twitter-ticker"></div>--}}
+                    {{--<!-- END TWITTER -->--}}
+                {{--</div>--}}
                 <div class="col-md-3">
                     <h4>Recent News</h4>
                     <ul class="thumb-list">
