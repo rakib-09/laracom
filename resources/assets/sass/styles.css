@@ -44,6 +44,43 @@ img {
   width: 100%;
   max-width: none;
 }
+li > a > img{
+  max-width: none;
+  width:40px !important;
+  height: 60px;
+  margin:1%;
+}
+ul.dropdown-menu{
+  width: 100%;
+}
+.dropdown-menu>li>a:hover { background: #8c8c8c }
+
+ul.dropdown-menu li{
+  border-bottom: 1px  solid #8c8c8c;
+  margin-right:10px;
+}
+
+.product_name{
+  color: black;
+  font-family: 'SolaimanLipi', arial, helvetica, sans-serif;
+  font-weight: bold;
+  font-size:1.6em;
+}
+.writer{
+  color: dimgrey;
+  font-family: 'SolaimanLipi', arial, helvetica, sans-serif;
+  font-weight: bold;
+  font-size:1.2em;
+}
+.price{
+  margin-top: 25px;
+  color: black;
+  font-family: 'SolaimanLipi', arial, helvetica, sans-serif;
+  font-weight: bold;
+  font-size:1em;
+  float:right;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: 'SolaimanLipi', sans-serif;
   margin-top: 0;
@@ -592,7 +629,6 @@ label {
   color: #fff;
   background: #2a8fbd;
   padding: 10px 0;
-  overflow: hidden;
   font-family: 'SolaimanLipi', arial, helvetica, sans-serif;
   font-weight: 300;
   margin-bottom: 0;
