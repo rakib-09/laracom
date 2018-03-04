@@ -9,20 +9,20 @@
     <meta name="author" content="Rakib">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{csrf_token()}}">
-    <link href="{{asset('css/app.css')}}" rel="stylesheet">
+    {{--<link href="{{asset('css/app.css')}}" rel="stylesheet">--}}
+    {{--<link href="{{asset('css/all.css')}}" rel="stylesheet">--}}
     {{--<!-- Google fonts -->--}}
     <link href="{{asset('css/solaimanLipi.css')}}" rel="stylesheet">
-    <link href="{{asset('css/all.css')}}" rel="stylesheet">
-    {{--<!-- Bootstrap styles -->--}}
-    {{--<link rel="stylesheet" href="{{asset('css/boostrap.css')}}">--}}
-    {{--<!-- Font Awesome styles (icons) -->--}}
-    {{--<link rel="stylesheet" href="{{asset('css/font_awesome.css')}}">--}}
-    {{--<!-- Main Template styles -->--}}
-    {{--<link rel="stylesheet" href="{{asset('css/styles.css')}}">--}}
-    {{--<!-- IE 8 Fallback -->--}}
+    <!-- Bootstrap styles -->
+    <link rel="stylesheet" href="{{asset('css/boostrap.css')}}">
+    <!-- Font Awesome styles (icons) -->
+    <link rel="stylesheet" href="{{asset('css/font_awesome.css')}}">
+    <!-- Main Template styles -->
+    <link rel="stylesheet" href="{{asset('css/styles.css')}}">
+    <!-- IE 8 Fallback -->
 
-    {{--<!-- Your custom styles (blank file) -->--}}
-    {{--<link rel="stylesheet" href="{{asset('css/mystyles.css')}}">--}}
+    <!-- Your custom styles (blank file) -->
+    <link rel="stylesheet" href="{{asset('css/mystyles.css')}}">
 
 </head>
 
@@ -91,6 +91,7 @@
     <!-- Custom scripts -->
     <script src="{{asset('js/custom.js')}}"></script>
     @yield('script')
+
 </body>
 
 </html>

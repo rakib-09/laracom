@@ -13,6 +13,7 @@
         "laravel/tinker": "~1.0",
         "nwidart/laravel-modules": "^3.0"
     },
+
     "require-dev": {
         "filp/whoops": "~2.0",
         "nunomaduro/collision": "~1.1",

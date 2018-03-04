@@ -66,15 +66,36 @@
     <i class="fa fa-sign-in dialog-icon"></i>
     <h3>সাইন ইন</h3>
     <h5>স্বাগতম</h5>
-    <form class="dialog-form">
+    <form class="dialog-form" method="POST" action="{{ route('login') }}">
+        @csrf
         <div class="form-group">
             <label>ই-মেইল</label>
-            <input type="text" placeholder="email@domain.com" class="form-control">
+            <input type="email" placeholder="email@domain.com" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{old('email')}}" required autofocus>
+            @if ($errors->has('email'))
+                <span class="invalid-feedback">
+                    <strong>{{ $errors->first('email') }}</strong>
+                </span>
+            @endif
         </div>
         <div class="form-group">
             <label>পাসওয়ার্ড</label>
-            <input type="password" placeholder="My secret password" class="form-control">
+            <input type="password" placeholder="My secret password" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+            @if ($errors->has('password'))
+                <span class="invalid-feedback">
+                    <strong>{{ $errors->first('password') }}</strong>
+                </span>
+            @endif
         </div>
+        <div class="form-group row">
+            <div class="col-md-6 offset-md-4">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+                    </label>
+                </div>
+            </div>
+        </div>
+
         <input type="submit" value="Sign in" class="btn btn-primary">
     </form>
     <ul class="dialog-alt-links">
@@ -90,34 +111,48 @@
     <i class="fa fa-edit dialog-icon"></i>
     <h3>সাইন আপ</h3>
     <h5>আমাদের সাথে চলতে প্রস্তুত ?? এখনই সাইন আপ করুন</h5>
-    <form class="dialog-form">
+    {!! Form::open(['route' => 'register', 'class' => 'form-horizontal dialog-form', 'role' => 'form', 'method' => 'POST'] ) !!}
+        {{ csrf_field() }}
         <div class="form-group">
-            <label>ই-মেইল</label>
-            <input type="text" placeholder="email@domain.com" class="form-control">
+            <label> আপনার নাম</label>
+            <input type="text" placeholder="সরয়ার আহমেদ" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+
+            @if ($errors->has('name'))
+                <span class="invalid-feedback">
+                     <strong>{{ $errors->first('name') }}</strong>
+                </span>
+            @endif
+        </div>
+        <div class="form-group">
+            <label> আপনার নাম</label>
+            <input type="text" placeholder="email@domain.com" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
+
+            @if ($errors->has('email'))
+                <span class="invalid-feedback">
+                     <strong>{{ $errors->first('email') }}</strong>
+                </span>
+            @endif
         </div>
         <div class="form-group">
             <label>পাসওয়ার্ড</label>
-            <input type="password" placeholder="My secret password" class="form-control">
+            <input type="password" placeholder="My secret password" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required">
+            @if ($errors->has('password'))
+                <span class="invalid-feedback">
+                    <strong>{{ $errors->first('password') }}</strong>
+                </span>
+            @endif
         </div>
         <div class="form-group">
             <label>রিপিট পাসওয়ার্ড</label>
-            <input type="password" placeholder="Type your password again" class="form-control">
-        </div>
-        <div class="row">
-            <div class="col-md-8">
-                <div class="form-group">
-                    <label>আপনার এলাকা</label>
-                    <input type="password" placeholder="Boston" class="form-control">
-                </div>
-            </div>
+            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
         </div>
         <div class="checkbox">
             <label>
                 <input type="checkbox">ই-মেইল এ কি আমাদের অফার পেতে চান ?
             </label>
         </div>
-        <input type="submit" value="Sign up" class="btn btn-primary">
-    </form>
+        <button type="submit"  class="btn btn-primary">Sign up</button>
+    {!! Form::close() !!}
     <ul class="dialog-alt-links">
         <li><a class="popup-text" href="#login-dialog" data-effect="mfp-zoom-out">Already member</a>
         </li>

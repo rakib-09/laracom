@@ -42,7 +42,7 @@
                     <i class="fa fa-plus cart-item-plus"></i>
                 </div>
             </div>
-            <div class="col-md-12">
+            <div class="row">
                 <div class="col-md-5">
                     <a href="#" class="btn btn-primary btn-lg"><i class="fa fa-heart"></i> Add to Wishlist</a>
                 </div>

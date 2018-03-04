@@ -15,3 +15,8 @@
 Route::get('/check', function () {
     return view('Template.top_area');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
