@@ -51,10 +51,29 @@
                             </ul>
                         </div>
                     </li>
+                    @guest
                     <li><a class="popup-text" href="#login-dialog" data-effect="mfp-move-from-top"><i class="fa fa-sign-in"></i>Sign in</a>
                     </li>
                     <li><a class="popup-text" href="#register-dialog" data-effect="mfp-move-from-top"><i class="fa fa-edit"></i>Sign up</a>
                     </li>
+                    @else
+                        <li class="shopping-cart"><a href="page-cart.html"><i class="fa fa-user"></i>{{ Auth::user()->name }} <span class="caret"></span></a>
+                            <div class="shopping-cart-box">
+                                <ul class="shopping-cart-items">
+                                    <li><a href="/profile/{{ Auth::user()->id }}"><i class="fa fa-wrench"></i> My Profile</a>
+                                    </li>
+                                    <li><a href="{{ route('logout') }}"
+                                           onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i> Logout</a>
+
+                                    </li>
+                                </ul>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                    @endguest
                 </ul>
             </div>
         </div>
@@ -72,8 +91,11 @@
             <label>ই-মেইল</label>
             <input type="email" placeholder="email@domain.com" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{old('email')}}" required autofocus>
             @if ($errors->has('email'))
+                <script>
+                    alert('your email is wrong.');
+                </script>
                 <span class="invalid-feedback">
-                    <strong>{{ $errors->first('email') }}</strong>
+                    <strong style="color:red;">{{ $errors->first('email') }}</strong>
                 </span>
             @endif
         </div>
@@ -81,8 +103,11 @@
             <label>পাসওয়ার্ড</label>
             <input type="password" placeholder="My secret password" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
             @if ($errors->has('password'))
+                <script>
+                    alert('Password should be 6 characters');
+                </script>
                 <span class="invalid-feedback">
-                    <strong>{{ $errors->first('password') }}</strong>
+                    <strong style="color:red;">{{ $errors->first('password') }}</strong>
                 </span>
             @endif
         </div>
@@ -106,20 +131,22 @@
     </ul>
 </div>
 
-
 <div id="register-dialog" class="mfp-with-anim mfp-hide mfp-dialog clearfix">
     <i class="fa fa-edit dialog-icon"></i>
     <h3>সাইন আপ</h3>
     <h5>আমাদের সাথে চলতে প্রস্তুত ?? এখনই সাইন আপ করুন</h5>
-    {!! Form::open(['route' => 'register', 'class' => 'form-horizontal dialog-form', 'role' => 'form', 'method' => 'POST'] ) !!}
+     <form action="/register" class = 'form-horizontal dialog-form' role = 'form' method ='POST'>
         {{ csrf_field() }}
         <div class="form-group">
             <label> আপনার নাম</label>
             <input type="text" placeholder="সরয়ার আহমেদ" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
 
             @if ($errors->has('name'))
+                <script>
+                    alert('Password should be 6 characters');
+                </script>
                 <span class="invalid-feedback">
-                     <strong>{{ $errors->first('name') }}</strong>
+                     <strong style="color:red;">{{ $errors->first('name') }}</strong>
                 </span>
             @endif
         </div>
@@ -128,23 +155,29 @@
             <input type="text" placeholder="email@domain.com" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
 
             @if ($errors->has('email'))
+                <script>
+                    alert('Password should be 6 characters');
+                </script>
                 <span class="invalid-feedback">
-                     <strong>{{ $errors->first('email') }}</strong>
+                     <strong style="color:red;"> {{ $errors->first('email') }}</strong>
                 </span>
             @endif
         </div>
         <div class="form-group">
             <label>পাসওয়ার্ড</label>
-            <input type="password" placeholder="My secret password" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required">
+            <input type="password" placeholder="My secret password" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
             @if ($errors->has('password'))
+                <script>
+                    alert('Password should be 6 characters');
+                </script>
                 <span class="invalid-feedback">
-                    <strong>{{ $errors->first('password') }}</strong>
+                    <strong style="color:red;">{{ $errors->first('password') }}</strong>
                 </span>
             @endif
         </div>
         <div class="form-group">
             <label>রিপিট পাসওয়ার্ড</label>
-            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required >
         </div>
         <div class="checkbox">
             <label>
@@ -152,7 +185,7 @@
             </label>
         </div>
         <button type="submit"  class="btn btn-primary">Sign up</button>
-    {!! Form::close() !!}
+    </form>
     <ul class="dialog-alt-links">
         <li><a class="popup-text" href="#login-dialog" data-effect="mfp-zoom-out">Already member</a>
         </li>
@@ -170,3 +203,4 @@
         <input type="submit" value="Request new password" class="btn btn-primary">
     </form>
 </div>
+

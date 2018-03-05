@@ -5,6 +5,8 @@ namespace Modules\Profile\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use App\User;
+use Modules\Profile\Entities\Userinfo;
 
 class ProfileController extends Controller
 {
@@ -14,6 +16,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
+
         return view('profile::index');
     }
 
@@ -39,9 +42,11 @@ class ProfileController extends Controller
      * Show the specified resource.
      * @return Response
      */
-    public function show()
+    public function show($id = null)
     {
-        return view('profile::show');
+        $print = User::find($id)->userinfo();
+        print_r($print);
+        //return view('profile::index');
     }
 
     /**
