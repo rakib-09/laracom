@@ -1,14 +1,12 @@
 <?php
 
-namespace Modules\Profile\Http\Controllers;
+namespace Modules\Product\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
-use App\User;
-use Modules\Profile\Entities\Userinfo;
 
-class ProfileController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +14,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-
-        return view('profile::index');
+        return view('product::index');
     }
 
     /**
@@ -26,7 +23,7 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        return view('profile::create');
+        return view('product::create');
     }
 
     /**
@@ -42,11 +39,9 @@ class ProfileController extends Controller
      * Show the specified resource.
      * @return Response
      */
-    public function show($id = null)
+    public function show()
     {
-        $userInformation = User::find($id);
-
-         return view('profile::index', compact('userInformation'));
+        return view('product::show');
     }
 
     /**
@@ -55,7 +50,7 @@ class ProfileController extends Controller
      */
     public function edit()
     {
-        return view('profile::edit');
+        return view('product::edit');
     }
 
     /**

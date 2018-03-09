@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
-
+use Modules\Profile\Entities\Userinfo;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','role'
     ];
 
     /**
@@ -29,6 +29,6 @@ class User extends Authenticatable
 
     public function userinfo(){
 
-        return $this->belongsTo('..\Module\Profile\Entites\Userinfo');
+        return $this->hasOne(Userinfo::class, 'user_id');
     }
 }

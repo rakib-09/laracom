@@ -1,6 +1,7 @@
 <?php
 
 namespace Modules\Profile\Entities;
+use App\User;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,6 +11,6 @@ class Userinfo extends Model
 
     public function users()
     {
-        return $this->hasOne('App\User', 'user_id');
+        return $this->belongsTo('App\User');
     }
 }

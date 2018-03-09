@@ -7,23 +7,35 @@
                 <form action="">
                     <div class="form-group">
                         <label for="">নাম</label>
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" value="{{$userInformation->name}}">
                     </div>
                     <div class="form-group">
                         <label for="">ই-মেইল</label>
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" value="{{$userInformation->email}}">
                     </div>
                     <div class="form-group">
                         <label for="">ফোন নাম্বার</label>
-                        <input type="text"  class="form-control">
+                        <input type="text"  class="form-control" value="{{$userInformation->userinfo->phone}}">
                     </div>
                     <div class="form-group">
                         <label for="">জন্ম তারিখ</label>
-                        <input type="text"  class="form-control">
+                        <input type="text"  class="form-control" value="{{$userInformation->userinfo->dob}}">
                     </div>
                     <div class="form-group">
                         <label for="">ঠিকানা</label>
-                        <input type="text"  class="form-control">
+                        <input type="text"  class="form-control" value="{{$userInformation->userinfo->address}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="">শহর</label>
+                        <input type="text"  class="form-control" value="{{$userInformation->userinfo->city}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="">দেশ</label>
+                        <input type="text"  class="form-control" value="{{$userInformation->userinfo->country}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="">পোস্টাল কোড</label>
+                        <input type="text"  class="form-control" value="{{$userInformation->userinfo->postalcode}}">
                     </div>
                     <input type="submit" value="Save Changes" class="btn btn-primary">
                 </form>
@@ -31,15 +43,15 @@
             <div class="col-md-6 password_details info">
                 <form action="">
                     <div class="form-group">
-                        <label for="">নাম</label>
+                        <label for="">পূর্বের পাসওয়ার্ড</label>
                         <input type="text" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="">ই-মেইল</label>
+                        <label for="">নতুন পাসওয়ার্ড</label>
                         <input type="text" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="">ফোন নাম্বার</label>
+                        <label for="">নতুন পাসওয়ার্ড(আবার)</label>
                         <input type="text"  class="form-control">
                     </div>
                     <input type="submit" value="Save Changes" class="btn btn-primary">
