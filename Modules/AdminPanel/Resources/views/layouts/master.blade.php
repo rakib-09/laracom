@@ -74,7 +74,7 @@
     </div>
     <script src="{{asset('js/jquery.min.js')}}"></script>
     <script src="{{asset('js/boostrap.min.js')}}"></script>
-    <script src="{{asset('js/adminpanel.js')}}"></script>
+    <script src="{{asset('js/imageupload.js')}}"></script>
     @yield('style_script')
     </body>
 </html>
