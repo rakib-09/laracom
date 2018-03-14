@@ -4,6 +4,8 @@ namespace Modules\Product\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Modules\Product\Repositories\ProductRepository;
+use Modules\Product\Services\ProductEloquent;
 
 class ProductServiceProvider extends ServiceProvider
 {
@@ -35,7 +37,7 @@ class ProductServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton(ProductRepository::class, ProductEloquent::class);
     }
 
     /**

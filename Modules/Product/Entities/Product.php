@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Details\Entities;
+namespace Modules\Product\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
