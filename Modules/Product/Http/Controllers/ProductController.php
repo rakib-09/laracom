@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\Product\Repositories\ProductRepository;
+use Modules\Product\Entities\Product;
+use Image;
+use Storage;
+
 class ProductController extends Controller
 {
     private $product;
@@ -26,8 +30,7 @@ class ProductController extends Controller
     public function index()
     {
         $product_list = $this->product->getAll();
-        print_r($product_list);
-        //return view('product::index');
+        return view('product::index');
     }
 
     /**
@@ -46,6 +49,26 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $image      = $request->file('product_image');
+        $fileName   = time() . '.' . $image->getClientOriginalExtension();
+        $img = Image::make($image->getRealPath());
+        $img->resize(200, 300);
+        $img->stream('jpg',90); // <-- Key point
+        Storage::disk('local')->put('images/products'.'/'.$fileName, $img, 'public');
+
+        $filename = 'test.txt';
+        Storage::cloud()->put($filename, \Carbon\Carbon::now()->toDateTimeString());
+        $dir = '/';
+        $recursive = false; // Get subdirectories also?
+        $file = collect(Storage::cloud()->listContents($dir, $recursive))
+            ->where('type', '=', 'file')
+            ->where('filename', '=', pathinfo($filename, PATHINFO_FILENAME))
+            ->where('extension', '=', pathinfo($filename, PATHINFO_EXTENSION))
+            ->sortBy('timestamp')
+            ->last();
+        return Storage::cloud()->get($file['path']);
+
+
     }
 
     /**
@@ -54,6 +77,7 @@ class ProductController extends Controller
      */
     public function show()
     {
+
         return view('product::show');
     }
 
