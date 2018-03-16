@@ -1,6 +1,7 @@
 <?php
 namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
+use Hypweb\Flysystem\GoogleDrive\GoogleDriveAdapter;
 
 class GoogleDriveServiceProvider extends ServiceProvider
 {

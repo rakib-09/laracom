@@ -15,7 +15,7 @@
                     <img id="preview-img" src="">
                 </div>
                 <div class="form-group">
-                    <input type="file" name="product_image" id="file" required>
+                    <input type="file" name="product_image" id="file">
                 </div>
                 {{--<button class="btn btn-primary" id="upload-button" type="submit" disabled>Upload image</button>--}}
                 <br>

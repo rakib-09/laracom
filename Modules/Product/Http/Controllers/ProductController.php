@@ -9,6 +9,7 @@ use Modules\Product\Repositories\ProductRepository;
 use Modules\Product\Entities\Product;
 use Image;
 use Storage;
+use File;
 
 class ProductController extends Controller
 {
@@ -29,7 +30,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $product_list = $this->product->getAll();
+        //$product_list = $this->product->getAll();
+        $listContents = Storage::cloud()->listContents();
+        $id = $this->getpathId($listContents, 'filename', 'quotation_final');
+        echo $id['path'] ;
         return view('product::index');
     }
 
@@ -47,29 +51,33 @@ class ProductController extends Controller
      * @param  Request $request
      * @return Response
      */
+    public function getpathId(Array $array, $key, $value)
+    {
+        foreach ($array as $subarray)
+        {
+            if (isset($subarray[$key]) && $subarray[$key] == $value)
+                return $subarray;
+        }
+    }
+
     public function store(Request $request)
     {
-        $image      = $request->file('product_image');
-        $fileName   = time() . '.' . $image->getClientOriginalExtension();
-        $img = Image::make($image->getRealPath());
-        $img->resize(200, 300);
-        $img->stream('jpg',90); // <-- Key point
-        Storage::disk('local')->put('images/products'.'/'.$fileName, $img, 'public');
+//        $image      = $request->file('product_image');
+//        $fileName   = time() . '.' . $image->getClientOriginalExtension();
+//        $img = Image::make($image->getRealPath());
+//        $img->resize(200, 300);
+//        $img->stream('jpg',90); // <-- Key point
+//        Storage::disk('local')->put('images/products'.'/'.$fileName, $img, 'public');
 
-        $filename = 'test.txt';
-        Storage::cloud()->put($filename, \Carbon\Carbon::now()->toDateTimeString());
-        $dir = '/';
-        $recursive = false; // Get subdirectories also?
-        $file = collect(Storage::cloud()->listContents($dir, $recursive))
-            ->where('type', '=', 'file')
-            ->where('filename', '=', pathinfo($filename, PATHINFO_FILENAME))
-            ->where('extension', '=', pathinfo($filename, PATHINFO_EXTENSION))
-            ->sortBy('timestamp')
-            ->last();
-        return Storage::cloud()->get($file['path']);
+        $file = $request->file('product_pdf');
+        $path = Storage::cloud()->put($file->getClientOriginalName(),  File::get($file));
 
-
+        $listContents = Storage::cloud()->listContents();
+        $nameonly= preg_replace('/\..+$/', '', $file->getClientOriginalName());
+        $id = $this->getpathId($listContents, 'filename', $nameonly);
+        echo "path: ". $id['path']. "file_name: ".$nameonly;
     }
+
 
     /**
      * Show the specified resource.
