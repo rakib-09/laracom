@@ -19,4 +19,10 @@ interface ProductRepository
     function update($id, array $attributes);
 
     function delete($id);
+
+    function imageUpload($image);
+
+    function fileUpload($file);
+
+    function fileLink(Array $array, $key, $value);
 }

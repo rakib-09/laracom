@@ -2,9 +2,12 @@
 
 namespace Modules\Homepage\Http\Controllers;
 
+use function GuzzleHttp\Promise\all;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Modules\Homepage\Repositories\HomePageRepository;
+
 
 class HomepageController extends Controller
 {
@@ -12,9 +15,19 @@ class HomepageController extends Controller
      * Display a listing of the resource.
      * @return Response
      */
+
+    public function __construct(HomePageRepository $product)
+    {
+        $this->product = $product;
+    }
+
+
     public function index()
     {
-        return view('homepage::index');
+
+        $allProducts = $this->product->getAll();
+
+        return view('homepage::index', compact('allProducts'));
     }
 
     /**

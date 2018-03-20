@@ -6,17 +6,16 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\Product\Repositories\ProductRepository;
-use Modules\Product\Entities\Product;
-use Image;
-use Storage;
-use File;
+use Carbon;
 
 class ProductController extends Controller
 {
     private $product;
+
     /**
      * initiate ProductRepository to product.
-     * @return Response
+     *
+     * @param ProductRepository $product
      */
 
     public function __construct(ProductRepository $product)
@@ -31,9 +30,6 @@ class ProductController extends Controller
     public function index()
     {
         //$product_list = $this->product->getAll();
-        $listContents = Storage::cloud()->listContents();
-        $id = $this->getpathId($listContents, 'filename', 'quotation_final');
-        echo $id['path'] ;
         return view('product::index');
     }
 
@@ -51,31 +47,29 @@ class ProductController extends Controller
      * @param  Request $request
      * @return Response
      */
-    public function getpathId(Array $array, $key, $value)
-    {
-        foreach ($array as $subarray)
-        {
-            if (isset($subarray[$key]) && $subarray[$key] == $value)
-                return $subarray;
-        }
-    }
+
 
     public function store(Request $request)
     {
-//        $image      = $request->file('product_image');
-//        $fileName   = time() . '.' . $image->getClientOriginalExtension();
-//        $img = Image::make($image->getRealPath());
-//        $img->resize(200, 300);
-//        $img->stream('jpg',90); // <-- Key point
-//        Storage::disk('local')->put('images/products'.'/'.$fileName, $img, 'public');
+        $imagePath = $this->product->imageUpload($request->file('product_image'));
+        $filePath = $this->product->fileUpload($request->file('product_pdf'));
+        $attributes = array([
+            'name' => $request->input('product_name_en'),
+            'bangla_name'=> $request->input('product_name_bn'),
+            'writer'=> $request->input('writer_name_en'),
+            'writer_bangla'=> $request->input('writer_name_bn'),
+            'publication'=> $request->input('publisher_name'),
+            'image'=> $imagePath,
+            'price'=> $request->input('product_price'),
+            'discount'=> $request->input('product_discount'),
+            'ext_link'=> $filePath['path'],
+            'description'=> $request->input('product_description'),
+            'created_At' => \Carbon\Carbon::now('Asia/Dhaka')
+        ]);
+       $this->product->create($attributes);
 
-        $file = $request->file('product_pdf');
-        $path = Storage::cloud()->put($file->getClientOriginalName(),  File::get($file));
+        return view('product::create');
 
-        $listContents = Storage::cloud()->listContents();
-        $nameonly= preg_replace('/\..+$/', '', $file->getClientOriginalName());
-        $id = $this->getpathId($listContents, 'filename', $nameonly);
-        echo "path: ". $id['path']. "file_name: ".$nameonly;
     }
 
 

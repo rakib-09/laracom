@@ -15,7 +15,7 @@
                     <img id="preview-img" src="">
                 </div>
                 <div class="form-group">
-                    <input type="file" name="product_image" id="file">
+                    <input type="file" name="product_image" id="file" >
                 </div>
                 {{--<button class="btn btn-primary" id="upload-button" type="submit" disabled>Upload image</button>--}}
                 <br>
@@ -31,44 +31,44 @@
             <div class="col-md-4">
                 <h4>পণ্যের নাম(English) </h4>
             </div>
-            <div class="col-md-8"><input type="text" class="form-control" ></div>
+            <div class="col-md-8"><input type="text" class="form-control" name ="product_name_en" required></div>
             <div class="col-md-4">
                 <h4>পণ্যের নাম(বাংলা) </h4>
             </div>
-            <div class="col-md-8"><input type="text" class="form-control" ></div>
+            <div class="col-md-8"><input type="text" class="form-control" name ="product_name_bn" required></div>
             <div class="col-md-4">
                 <h4>লেখকের নাম(English) </h4>
             </div>
-            <div class="col-md-8"><input type="text" class="form-control" ></div>
+            <div class="col-md-8"><input type="text" class="form-control" name ="writer_name_en" required></div>
             <div class="col-md-4">
                 <h4>লেখকের নাম(বাংলা) </h4>
             </div>
-            <div class="col-md-8"><input type="text" class="form-control" ></div>
+            <div class="col-md-8"><input type="text" class="form-control" name ="writer_name_bn" required></div>
             <div class="col-md-4">
                 <h4>প্রকাশক </h4>
             </div>
-            <div class="col-md-8"><input type="text" class="form-control" ></div>
+            <div class="col-md-8"><input type="text" class="form-control" name ="publisher_name" required></div>
             <div class="col-md-4">
                 <h4>পণ্যের দাম </h4>
             </div>
-            <div class="col-md-8"><input type="text" class="form-control" ></div>
+            <div class="col-md-8"><input type="text" class="form-control" name ="product_price" required></div>
             <div class="col-md-4">
                 <h4>ডিসকাউন্ট (যদি থাকে) </h4>
             </div>
-            <div class="col-md-8"><input type="text" class="form-control" ></div>
+            <div class="col-md-8"><input type="text" class="form-control" name ="product_discount" required></div>
             <div class="col-md-4">
                 <h4>এক্সটারনাল লিঙ্ক(ex: PDF) </h4>
             </div>
             <div class="col-md-8" style="max-width: 650px; margin: auto;">
                 <div class="form-group">
-                    <input type="file" name="product_pdf" id="file" >
+                    <input type="file" name="product_pdf" id="file"  >
                 </div>
                 <br>
             </div>
             <div class="col-md-4">
                 <h4>বর্ণনা </h4>
             </div>
-            <div class="col-md-8"><textarea type="text" class="form-control" rows="10" ></textarea></div>
+            <div class="col-md-8"><textarea type="text" class="form-control" rows="10" name ="product_description" required></textarea></div>
 
             <div class="col-md-8 col-md-offset-4">
                 <button class="btn btn-primary btn-lg" id="upload-button" type="submit" style="margin:2%">Add Product</button>

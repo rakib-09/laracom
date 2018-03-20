@@ -9,6 +9,10 @@ namespace Modules\Product\Services;
 
 use Modules\Product\Entities\Product as Product;
 use Modules\Product\Repositories\ProductRepository;
+use Image;
+use Storage;
+use File;
+
 
 class ProductEloquent implements ProductRepository
 {
@@ -20,17 +24,17 @@ class ProductEloquent implements ProductRepository
     /**
      * EloquentTask constructor.
      *
-     * @param App\Task $model
+     * @param Product $model
      */
     public function __construct(Product $model)
     {
-        $this->model = $model;
+        $this->model = new $model;
     }
 
     /**
-     * Get all tasks.
+     * Get all Products.
      *
-     * @return Illuminate\Database\Eloquent\Collection
+     * @return Product
      */
     public function getAll()
     {
@@ -42,7 +46,7 @@ class ProductEloquent implements ProductRepository
      *
      * @param integer $id
      *
-     * @return App\Task
+     * @return Product
      */
     public function getById($id)
     {
@@ -50,24 +54,27 @@ class ProductEloquent implements ProductRepository
     }
 
     /**
-     * Create a new task.
+     * Create a new Product.
      *
      * @param array $attributes
      *
-     * @return App\Task
+     * @return Product
      */
     public function create(array $attributes)
     {
-        return $this->model->create($attributes);
+        //$this->model->create($attributes);
+        return $this->model->insert($attributes);
+
+       // return $attributes;
     }
 
     /**
-     * Update a task.
+     * Update a Product.
      *
      * @param integer $id
      * @param array $attributes
      *
-     * @return App\Task
+     * @return Product
      */
     public function update($id, array $attributes)
     {
@@ -75,7 +82,7 @@ class ProductEloquent implements ProductRepository
     }
 
     /**
-     * Delete a task.
+     * Delete a Product.
      *
      * @param integer $id
      *
@@ -85,5 +92,71 @@ class ProductEloquent implements ProductRepository
     {
         return $this->model->find($id)->delete();
     }
+    /**
+     * Upload Images
+     *
+     * @param Image
+     *
+     * @return fileName
+     */
+    public function imageUpload($image)
+    {
+        $fileName   = time() . '.' . $image->getClientOriginalExtension();
+        $img = Image::make($image->getRealPath());
+        $img->resize(200, 300);
+        $img->stream('jpg',90); // <-- Key point
+        Storage::disk('local')->put('images/products'.'/'.$fileName, $img, 'public');
+        return $fileName;
+    }
+
+    /**
+     * Return the File Name
+     *
+     * @param array $array
+     * @param $key
+     * @param $value
+     * @return fileName
+     * @internal param $Array , string, string
+     *
+     */
+    public function fileLink(Array $array, $key, $value)
+    {
+        foreach ($array as $subArray)
+        {
+            if (isset($subArray[$key]) && $subArray[$key] == $value)
+                return $subArray;
+        }
+    }
+
+    /**
+     * File Upload to Google Drive
+     *
+     * @param $file
+     * @return fileName
+     * @internal param array $array
+     * @internal param $Array , string, string
+     */
+    public function fileUpload($file)
+    {
+        Storage::cloud()->put($file->getClientOriginalName(),  File::get($file));
+
+        //get all the uploaded file information from GOOGLE DRIVE.
+        $listContents = Storage::cloud()->listContents();
+
+        $nameOnly = preg_replace('/\..+$/', '', $file->getClientOriginalName());
+
+        $id = $this->fileLink($listContents, 'filename', $nameOnly);
+
+        // Change permissions to public
+        $service = Storage::cloud()->getAdapter()->getService();
+        $permission = new \Google_Service_Drive_Permission();
+        $permission->setRole('reader');
+        $permission->setType('anyone');
+        $permission->setAllowFileDiscovery(false);
+        $service->permissions->create($id['basename'], $permission);
+
+        return $id;
+    }
+
 }
 

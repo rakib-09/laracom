@@ -4,6 +4,8 @@ namespace Modules\Homepage\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Modules\Homepage\Repositories\HomePageRepository;
+use Modules\Homepage\Services\HomePageEloquent;
 
 class HomepageServiceProvider extends ServiceProvider
 {
@@ -35,7 +37,7 @@ class HomepageServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton(HomePageRepository::class, HomePageEloquent::class);
     }
 
     /**
