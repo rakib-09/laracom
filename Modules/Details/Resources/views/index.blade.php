@@ -13,7 +13,7 @@
                                     <li class="page page3"></li>
                                     <li class="page page2"></li>
                                     <li class="page page1"></li>
-                                    <li class="cover"><img src="https://about.canva.com/wp-content/uploads/sites/3/2015/01/children_bookcover.png" alt="" height="300px" width="200px"></li>
+                                    <li class="cover"><a href="https://drive.google.com/open?id={{$product->ext_link}}" target="_blank"><img src="<?php echo asset("storage/images/products/$product->image")?>" alt="" height="300" width="200"></a></li>
                                 </ul>
                             </a>
                         </div>
@@ -22,16 +22,16 @@
             {{--</div>--}}
         </div>
         <div class="col-md-6">
-            <h2>হীরক রাজার দেশে</h2>
-            <h4>সত্যজিৎ রায়</h4>
+            <h2>{{$product->bangla_name}}</h2>
+            <h4>{{$product->writer_bangla}}</h4>
             <code class="col-md-12">
                 <div class="col-md-6">
                     <p>
                         <span class="priceLabel">Our Price: </span>
-                        <span class="mainPrice">Tk. 150</span>
-                        <span class="priceOff">(25% OFF)</span>
+                        <span class="mainPrice">Tk.{{$product->price - ($product->price* $product->discount/100)}}</span>
+                        <span class="priceOff">({{$product->discount}}% OFF)</span>
                     </p>
-                    <p><span class="priceLabel">Regular Price: </span> <span class="actualPrice">Tk. 200</span> </p>
+                    <p><span class="priceLabel">Regular Price: </span> <span class="actualPrice">Tk. {{$product->price}}</span> </p>
                     <p><span class="priceLabel">Shipping: </span><span class="shippingPrice">Tk. 30</span></p>
                 </div>
             </code>
@@ -53,15 +53,7 @@
         </div>
         <div class="col-md-10 product_description">
             <h2>বইটি সম্পর্কে কিছু কথা</h2>
-            <p>জীবন থেকে নেয়া!
-                আমাদের জীবনটা আসলেও অনেক জটিল। প্রতিটা মুহূর্তে অনেক ওঠা নামা আমাদের।এই মন ভালো তো এই মন খারাপ। জীবনে আমরা যখন অনেক কষ্টে আর হতাশায় থাকি, আমরা চাই কেউ আমাদের পাশে বসে আমাদের একটু সময় দিক, একটু আমাদের কথাগুলো শুনুক। ভালো হোক মন্দ হোক; এমনকি মিথ্যে হলেও একটু ভরসা দিক। আমরা সব সমস্যার সমাধান চাই না, কিন্তু আমরা একটু সঙ্গ চাই, একটু অনুভব করতে চাই, কেউ আমাকে বোঝার চেষ্টা করছে।
-                আমি আমার নিজের জীবন থেকে এই জিনিসগুলো শিখেছি। স্কুল জীবনে দীর্ঘ ১০ বছর আমি আমার চেহারা আর শারীরিক গড়ন নিয়ে অনেক নির্মম উপহাস আর কৌতুকের সম্মুখীন হয়েছিলাম। স্কুলের একটা বড় সময় কাটে হোস্টেলে। আমার হোস্টেলে পুরুষত্ব আর ব্যক্তিত্বকে প্রশ্নবিদ্ধ করে এমন অনেক হ্যারাসমেন্টের শিকার হই আমি।
-                সেখান থেকে কলেজে উঠে নিজেকে হাসির পাত্রে পরিণত করতে না চাওয়ায় নিজেকে একজন দুরন্ত কিশোর হিসেবে প্রমাণ করতে বদ্ধপরিকর হই। আমি দেখতাম, বন্ধুমহলে চূড়ান্ত মাত্রায় জনপ্রিয় হতে হলে শিক্ষক আর শিক্ষিকাদের নিয়ে একটু রসালো-কথন ছাড়া আর কোনও উপায় নেই। কথিত আছে, মহাকবি ফেরদৌসি এক রাতে ‘শাহনামা’-এর ষাট হাজার স্তবক লিখেন। আর আমিকলেজের প্রিন্সিপাল স্যার আর ম্যাডামকে নিয়ে ষাট লাইনের প্রেমের কবিতা লিখে ফেলি। কলেজের ছয় তলা হোস্টেলের দেয়াল ছিলো আমার লেখার কাগজ। প্রতি তলার দেয়ালে ১০ লাইন করে মোট ৬০ লাইন আমি লিখি। ফলস্বরুপ কলেজ থেকে বহিষ্কৃত হয়ে যাই। ২০০৯ সালের ৯ নভেম্বর সকাল ১০:৩২এআমার বাবা মাথা নিচু করে আমাকে কলেজ থেকে নিয়ে আসেন।
-                এরপর আমার মফস্বলের একটা কলেজে বাবা-মা, ছোট ভাই থেকে দূরে থেকে কলেজ জীবনটা কোনও মতে শেষ করি। বিশ্ববিদ্যালয়ে উঠে নিজের দায়িত্বজ্ঞানহীনতার দরুণ এক বছর আমার নষ্ট হয়। বাবা-মা আসলে তাদের সন্তানের কাছে খুব বেশি কিছু চান না। মাত্র দুইটা জিনিস তারা চান।
-                •	তাদের ছেলে যাতে একটা ‘ভালো ছেলে’ হয়
-                •	তাদের ছেলে যাতে একটা ‘ভালো ছাত্র’ হয়
-                আমার কলেজে বহিষ্কারের কারণে আমি আমার বাবা-মায়ের ভালো ছেলের স্বপ্নটা ভেঙ্গে দেই। বিশ্ববিদ্যালয়ে উঠে ইয়ার ড্রপের ঘটনা, ভালো ছাত্রের ২য় প্রত্যাশাটাও শেষ করে দেয়। এই ২টা নোটিশ যেদিন আমার বাসায় আসে, তখন আমার আম্মু জানার পর তার প্রেশার উঠে যায়। নিজেকে অনেক অপরাধী লাগতো। সবার জন্য বোঝা মনে হতো। আমার পাশের বাসার আংকেল আন্টিরা তাদের ছেলে-মেয়েদের সাথে আমাকে মিশতে দিতেন না। আমার ছোট ভাই কোনও বিষয়ে দুষ্টামি করলে আমাকে আলাদা রুমে বলা হতো, তোমার কু-প্রভাবেই তোমার ছোট ভাই নষ্ট হচ্ছে। দিনের পর দিন কষ্টগুলো পেয়ে শুধু সমাধান খুঁজতাম। সব কষ্টগুলোর একটাই সমাধান আমার মাথায় ছিলো।
-                “জীবন শেষ তো জীবনের সব না পাওয়া,জটিলতা, সমস্যা সব শেষ!”</p>
+            <p>{{$product->description}}</p>
         </div>
         <div class="col-md-10 col-md-offset-1 product_review">
             <div class="panel panel-default">
@@ -69,6 +61,9 @@
                     <h1>আপনার মতামত দিনঃ</h1>
                     <p>আপনার মতামত আমাদের কাছে সবচেয়ে গুরুত্বপূর্ণ</p>
                     <div class="comments">
+                        @guest
+                        <h2>মতামত দেয়ার জন্য লগইন করুন <a href="/login">এখানে</a></h2>
+                        @else
                         <div class="comment-wrap">
                             <div class="photo">
                                 <div class="avatar" style="background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/dancounsell/128.jpg')"></div>
@@ -105,11 +100,24 @@
                                 </div>
                             </div>
                         </div>
+                            @endguest
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="modal fade" id="modal-agreement">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <object type="application/pdf" data="path/to/pdf" width="100%" height="500" style="height: 85vh;">No Support</object>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 @endsection
 
 @section('script')

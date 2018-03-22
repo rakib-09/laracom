@@ -170,7 +170,7 @@
                         <ul class="product-actions-list">
                             <li><a class="btn btn-sm" href="#"><i class="fa fa-shopping-cart"></i> To Cart</a>
                             </li>
-                            <li><a class="btn btn-sm"><i class="fa fa-bars"></i> Details</a>
+                            <li><a href="/details/{{$product->id}}" class="btn btn-sm"><i class="fa fa-bars"></i> Details</a>
                             </li>
                         </ul>
                     </div>

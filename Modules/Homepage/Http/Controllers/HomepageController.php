@@ -13,7 +13,7 @@ class HomepageController extends Controller
 {
     /**
      * Display a listing of the resource.
-     * @return Response
+     * @param HomePageRepository $product
      */
 
     public function __construct(HomePageRepository $product)
