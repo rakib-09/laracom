@@ -2573,7 +2573,7 @@ ul.pagination li.next a:before {
   background: #808080;
 }
 .cart-table .cart-item-quantity > input, .cart-item-quantity > input {
-  width: 25px;
+  width: 60px;
   text-align: center;
   outline: none;
   display: inline-block;

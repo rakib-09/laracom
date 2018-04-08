@@ -27,9 +27,9 @@
             <div class="col-md-6">
                 <!-- LOGIN REGISTER LINKS -->
                 <ul class="login-register">
-                    <li class="shopping-cart"><a href="page-cart.html"><i class="fa fa-shopping-cart"></i>My Cart</a>
+                    <li class="shopping-cart"><a href="./cart"><i class="fa fa-shopping-cart"></i>My Cart</a>
                         <div class="shopping-cart-box">
-                            <ul class="shopping-cart-items">
+                            <ul class="shopping-cart-items shopping_cart">
                                 <li>
                                     <a href="product-shop-sidebar.html">
                                         <img src="img/70x70.png" alt="Image Alternative text" title="AMaze" />

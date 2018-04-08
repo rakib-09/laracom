@@ -348,3 +348,35 @@ $('.popup-image').magnificPopup({
 //         });
 //     }
 // });
+$(document).ready(function(){
+
+    $('.add_cart').on('click', function () {
+        var product_value = $(this).parent().find('li:first-child').attr("id");
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $.ajax({
+            url:'./cart',
+            type:'POST',
+            data:{product_value: product_value},
+
+            success: function (data) {
+                // response=JSON.parse(data);
+                // $.each(response, function(index, element) {
+                //     $(".quantity").html(element.quantity);
+                //     $("#bookPrice").val(element.unit_price - (element.unit_price * (element.discount_percentage / 100)));
+                //     $("#buying_price").val(element.buying_price);
+                // });
+                // $(".total_price").html("");
+                // $(".net_price").html("");
+                // $('#bookQuantity').val("");
+                alert("success");
+            }
+
+        });
+    });
+});
