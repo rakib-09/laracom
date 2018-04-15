@@ -6,28 +6,34 @@ use function GuzzleHttp\Promise\all;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
-use Modules\Homepage\Repositories\HomePageRepository;
+use Modules\Product\Repositories\ProductRepository;
+use Modules\Cart\Repositories\TempCartRepository;
 
 
 class HomepageController extends Controller
 {
+    private $product, $cart;
+
     /**
      * Display a listing of the resource.
-     * @param HomePageRepository $product
+     * @param ProductRepository $product
+     * @param TempCartRepository $cart
      */
 
-    public function __construct(HomePageRepository $product)
+    public function __construct(ProductRepository $product, TempCartRepository $cart)
     {
         $this->product = $product;
+        $this->cart = $cart;
     }
 
 
     public function index()
     {
 
-        $allProducts = $this->product->getAll();
+        $all_products = $this->product->getAll();
+        $cart_info = $this->cart->getAll();
 
-        return view('homepage::index', compact('allProducts'));
+        return view('homepage::index', compact('all_products', 'cart_info'));
     }
 
     /**

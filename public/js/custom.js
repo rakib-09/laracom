@@ -351,7 +351,8 @@ $('.popup-image').magnificPopup({
 $(document).ready(function(){
 
     $('.add_cart').on('click', function () {
-        var product_value = $(this).parent().find('li:first-child').attr("id");
+
+        var product_id = $(this).parent().find('li:first-child').attr("id");
 
         $.ajaxSetup({
             headers: {
@@ -362,20 +363,22 @@ $(document).ready(function(){
         $.ajax({
             url:'./cart',
             type:'POST',
-            data:{product_value: product_value},
+            data:{product_id: product_id},
 
             success: function (data) {
-                // response=JSON.parse(data);
-                // $.each(response, function(index, element) {
-                //     $(".quantity").html(element.quantity);
-                //     $("#bookPrice").val(element.unit_price - (element.unit_price * (element.discount_percentage / 100)));
-                //     $("#buying_price").val(element.buying_price);
-                // });
-                // $(".total_price").html("");
-                // $(".net_price").html("");
-                // $('#bookQuantity').val("");
-                alert("success");
-            }
+                var response = JSON.parse(data);
+                alert(response);
+                $.each(response, function(index, element) {
+                        alert(element.product_name);
+                });
+            //
+            // <li>
+            // <a href="product-shop-sidebar.html">
+            // <img src="img/70x70.png" alt="Image Alternative text" title="AMaze" />
+            // <h5>New Glass Collection</h5><span class="shopping-cart-item-price">$150</span>
+            // </a>
+            // </li>
+        }
 
         });
     });

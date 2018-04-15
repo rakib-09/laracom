@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class TempCart extends Model
 {
-    protected $fillable = [];
+    protected $fillable = ['product_id','product_price','product_image'];
 }

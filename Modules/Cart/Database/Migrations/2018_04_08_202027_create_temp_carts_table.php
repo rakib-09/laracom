@@ -16,12 +16,11 @@ class CreateTempCartsTable extends Migration
         Schema::create('temp_carts', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('product_id');
+            $table->string('product_name_bangla');
             $table->string('product_name');
-            $table->string('product_name');
-            $table->string('product_name');
-            $table->string('product_name');
-
-
+            $table->integer('product_price');
+            $table->integer('product_quantity');
+            $table->string('product_image');
             $table->timestamps();
         });
     }

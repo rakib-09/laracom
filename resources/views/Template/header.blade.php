@@ -27,24 +27,21 @@
             <div class="col-md-6">
                 <!-- LOGIN REGISTER LINKS -->
                 <ul class="login-register">
-                    <li class="shopping-cart"><a href="./cart"><i class="fa fa-shopping-cart"></i>My Cart</a>
+                    <li class="shopping-cart"><a href=""><i class="fa fa-shopping-cart"></i>My Cart</a>
                         <div class="shopping-cart-box">
                             <ul class="shopping-cart-items shopping_cart">
+                                @foreach($cart_info as $cart)
                                 <li>
-                                    <a href="product-shop-sidebar.html">
-                                        <img src="img/70x70.png" alt="Image Alternative text" title="AMaze" />
-                                        <h5>New Glass Collection</h5><span class="shopping-cart-item-price">$150</span>
+                                    <a href="">
+                                        <img src="<?php echo asset("storage/images/products/$cart->product_image")?>"  alt="{{$cart->product_name}}" title="{{$cart->product_name}}" width="50" height = "80"/>
+                                        <h4 style="color: white;">{{$cart->product_name_bangla}}</h4><span class="shopping-cart-item-price">Tk. {{$cart->product_price}}</span>
+                                        <span class="pull-right"><i class="fa fa-trash-o fa-3x " style="color: red;"></i></span>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="product-shop-sidebar.html">
-                                        <img src="img/70x70.png" alt="Image Alternative text" title="Gamer Chick" />
-                                        <h5>Playstation Accessories</h5><span class="shopping-cart-item-price">$170</span>
-                                    </a>
-                                </li>
+                                    @endforeach
                             </ul>
                             <ul class="list-inline text-center">
-                                <li><a href="page-cart.html"><i class="fa fa-shopping-cart"></i> View Cart</a>
+                                <li><a href="./cart"><i class="fa fa-shopping-cart"></i> View Cart</a>
                                 </li>
                                 <li><a href="page-checkout.html"><i class="fa fa-check-square"></i> Checkout</a>
                                 </li>

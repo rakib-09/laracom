@@ -2193,7 +2193,7 @@ footer.main a {
 .shopping-cart .shopping-cart-box {
   position: absolute;
   z-index: 10;
-  width: 200px;
+  width: 350px;
   padding: 10px 15px;
   -webkit-border-radius: 0 0 4px 4px;
   border-radius: 0 0 4px 4px;
@@ -2240,7 +2240,7 @@ footer.main a {
   transition: 0.3s;
 }
 .shopping-cart .shopping-cart-box .shopping-cart-items > li > a img {
-  width: 50px;
+  width: 70px;
   float: left;
   margin-right: 12px;
   -webkit-border-radius: 3px;

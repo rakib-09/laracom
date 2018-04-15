@@ -150,7 +150,7 @@
     <div class="gap gap-small"></div>
     <h1 class="mb20 text-center">New Arrivals <small><a href="#">View all</a></small></h1>
     <div class="row row-wrap">
-        @foreach($allProducts as $product)
+        @foreach($all_products as $product)
         <div class="col-md-3">
             <div class="product-thumb">
                 <header class="product-header"><span class="product-label label label-danger">Hot</span>

@@ -4,6 +4,8 @@ namespace Modules\Cart\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Modules\Cart\Repositories\TempCartRepository;
+use Modules\Cart\Services\TempCartEloquent;
 
 class CartServiceProvider extends ServiceProvider
 {
@@ -35,7 +37,7 @@ class CartServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton(TempCartRepository::class, TempCartEloquent::class);
     }
 
     /**
