@@ -366,18 +366,20 @@ $(document).ready(function(){
             data:{product_id: product_id},
 
             success: function (data) {
-                var response = JSON.parse(data);
-                alert(response);
-                $.each(response, function(index, element) {
-                        alert(element.product_name);
-                });
-            //
-            // <li>
-            // <a href="product-shop-sidebar.html">
-            // <img src="img/70x70.png" alt="Image Alternative text" title="AMaze" />
-            // <h5>New Glass Collection</h5><span class="shopping-cart-item-price">$150</span>
-            // </a>
-            // </li>
+               // var response = JSON.parse(data);
+                var response = $.parseJSON(data);
+                var insert_data = "<li><a href=''> <img src='"+response.product_image+"' alt='' title='"+response.product_name+"' />
+                    <h4 style='color: white;'>"+response.product_name+"</h4><span class='shopping-cart-item-price'></span></a></li>";
+                $(".shopping_cart").append(
+
+                );
+
+            <li>
+            <a href="product-shop-sidebar.html">
+            <img src="img/70x70.png" alt="Image Alternative text" title="AMaze" />
+            <h5>New Glass Collection</h5><span class="shopping-cart-item-price">$150</span>
+            </a>
+            </li>
         }
 
         });

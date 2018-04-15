@@ -31,9 +31,9 @@ class HomepageController extends Controller
     {
 
         $all_products = $this->product->getAll();
-        $cart_info = $this->cart->getAll();
 
-        return view('homepage::index', compact('all_products', 'cart_info'));
+
+        return view('homepage::index', compact('all_products'));
     }
 
     /**

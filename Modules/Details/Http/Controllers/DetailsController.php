@@ -5,13 +5,13 @@ namespace Modules\Details\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
-use Modules\Homepage\Repositories\HomePageRepository;
+use Modules\Product\Repositories\ProductRepository;
 
 class DetailsController extends Controller
 {
     private $product;
 
-    public function __construct(HomePageRepository $product)
+    public function __construct(ProductRepository $product)
     {
         $this->product = $product;
     }

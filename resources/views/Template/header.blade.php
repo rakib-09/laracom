@@ -30,6 +30,7 @@
                     <li class="shopping-cart"><a href=""><i class="fa fa-shopping-cart"></i>My Cart</a>
                         <div class="shopping-cart-box">
                             <ul class="shopping-cart-items shopping_cart">
+                                <?php $cart_info = getCartInfo() ?>
                                 @foreach($cart_info as $cart)
                                 <li>
                                     <a href="">
