@@ -31,8 +31,6 @@ class HomepageController extends Controller
     {
 
         $all_products = $this->product->getAll();
-
-
         return view('homepage::index', compact('all_products'));
     }
 

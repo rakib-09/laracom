@@ -350,6 +350,7 @@ $('.popup-image').magnificPopup({
 // });
 $(document).ready(function(){
 
+
     $('.add_cart').on('click', function () {
 
         var product_id = $(this).parent().find('li:first-child').attr("id");
@@ -368,20 +369,10 @@ $(document).ready(function(){
             success: function (data) {
                // var response = JSON.parse(data);
                 var response = $.parseJSON(data);
-                var insert_data = "<li><a href=''> <img src='"+response.product_image+"' alt='' title='"+response.product_name+"' />
-                    <h4 style='color: white;'>"+response.product_name+"</h4><span class='shopping-cart-item-price'></span></a></li>";
-                $(".shopping_cart").append(
+                var insert_data = "<li><a href='#'><img src='./storage/images/products/"+response.image+"' alt='"+response.name+"' title='"+response.name+"' width='50' height = '80' /><h4 style='color: white;'>"+response.bangla_name+"</h4><span class='shopping-cart-item-price'>tk. "+response.price+"</span><span class='pull-right'><i class='fa fa-trash-o fa-3x ' style='color: red;'></i></span></a></li>";
 
-                );
-
-            <li>
-            <a href="product-shop-sidebar.html">
-            <img src="img/70x70.png" alt="Image Alternative text" title="AMaze" />
-            <h5>New Glass Collection</h5><span class="shopping-cart-item-price">$150</span>
-            </a>
-            </li>
+                $(".shopping_cart").append(insert_data);
         }
-
         });
     });
 });
