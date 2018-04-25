@@ -33,10 +33,10 @@
                                 <?php $cart_info = getCartInfo() ?>
                                 @foreach($cart_info as $cart)
                                 <li>
-                                    <a href="">
+                                    <a href="javascript:void(0)">
                                         <img src="<?php echo asset("storage/images/products/$cart->product_image")?>"  alt="{{$cart->product_name}}" title="{{$cart->product_name}}" width="50" height = "80"/>
                                         <h4 style="color: white;">{{$cart->product_name_bangla}}</h4><span class="shopping-cart-item-price">Tk. {{$cart->product_price}}</span>
-                                        <span class="pull-right"><i class="fa fa-trash-o fa-3x " style="color: red;"></i></span>
+                                        <span class="pull-right" ><i class="fa fa-trash-o fa-3x delete_cart" id="{{$cart->id}}" style="color: red;"></i></span>
                                     </a>
                                 </li>
                                     @endforeach

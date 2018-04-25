@@ -59,7 +59,7 @@ class TempCartEloquent implements TempCartRepository
     public function create(array $attributes)
     {
         //$this->model->create($attributes);
-        return $this->model->insert($attributes);
+        return $this->model->insertGetId($attributes);
 
         // return $attributes;
     }

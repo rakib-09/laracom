@@ -4,4 +4,5 @@ Route::group(['middleware' => 'web', 'prefix' => 'cart', 'namespace' => 'Modules
 {
     Route::get('/', 'CartController@index');
     Route::post('/', 'CartController@create');
+    Route::delete('/', 'CartController@destroy');
 });

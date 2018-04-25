@@ -368,11 +368,38 @@ $(document).ready(function(){
 
             success: function (data) {
                // var response = JSON.parse(data);
-                var response = $.parseJSON(data);
-                var insert_data = "<li><a href='#'><img src='./storage/images/products/"+response.image+"' alt='"+response.name+"' title='"+response.name+"' width='50' height = '80' /><h4 style='color: white;'>"+response.bangla_name+"</h4><span class='shopping-cart-item-price'>tk. "+response.price+"</span><span class='pull-right'><i class='fa fa-trash-o fa-3x ' style='color: red;'></i></span></a></li>";
+                var data2 = data.split('---');
+
+                var response = $.parseJSON(data2[0]);
+                var insert_data = "<li><a href='javascript:void(0)'><img src='./storage/images/products/"+response.image+"' alt='"+response.name+"' title='"+response.name+"' width='50' height = '80' /><h4 style='color: white;'>"+response.bangla_name+"</h4><span class='shopping-cart-item-price'>tk. "+response.price+"</span><span class='pull-right'><i class='fa fa-trash-o fa-3x delete_cart'  id='"+data2[1]+"' style='color: red;'></i></span></a></li>";
 
                 $(".shopping_cart").append(insert_data);
         }
         });
     });
+
+    $("ul").on('click','.delete_cart', function () {
+       var cart_id = $(this).attr('id');
+       var name = $(this);
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $.ajax({
+            url:'./cart',
+            type:'DELETE',
+            data:{cart_id: cart_id},
+
+            success: function (data) {
+                if(data === "done")
+                {
+                   name.parentsUntil('li').html('');
+                }
+            }
+        });
+
+    });
+
 });

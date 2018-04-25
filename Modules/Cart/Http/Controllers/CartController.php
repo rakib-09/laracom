@@ -45,8 +45,8 @@ class CartController extends Controller
             'product_quantity' => 1,
             'product_image' => $product_info->image
         ]);
-        $this->temp_cart->create($insert_into_cart);
-        echo $product_info;
+        $tempCartVal = $this->temp_cart->create($insert_into_cart);
+        echo $product_info."---".$tempCartVal;
 
     }
 
@@ -91,7 +91,11 @@ class CartController extends Controller
      * Remove the specified resource from storage.
      * @return Response
      */
-    public function destroy()
+    public function destroy(Request $request)
     {
+        $tempCartID = $request->input('cart_id');
+        $this->temp_cart->delete($tempCartID);
+        return "done";
+
     }
 }
