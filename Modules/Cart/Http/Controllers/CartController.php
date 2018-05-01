@@ -25,7 +25,7 @@ class CartController extends Controller
     public function index()
     {
         $cart_info = $this->temp_cart->getAll();
-        return $cart_info;
+        return view('cart::index', compact('cartlists'));
     }
 
     /**

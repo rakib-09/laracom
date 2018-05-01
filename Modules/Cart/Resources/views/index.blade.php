@@ -13,54 +13,24 @@
                 </tr>
                 </thead>
                 <tbody>
+                @foreach($cartlists as $cart)
                 <tr>
                     <td class="cart-item-image">
                         <a href="#">
-                            <img src="img/70x70.png" alt="Image Alternative text" title="AMaze" />
+                            <img src="<?php echo asset("storage/images/products/$cart->product()->image")?>" alt="Image Alternative text" title="AMaze" />
                         </a>
                     </td>
-                    <td><a href="#">রহিমের দিনরাত্রি</a>
+                    <td><a href="/details/$cart->product_id">{{$cart->product()->product_name_bangla}}</a>
                     </td>
                     <td class="cart-item-quantity"><i class="fa fa-minus cart-item-minus"></i>
-                        <input type="text" name="cart-quantity" class="cart-quantity" value="1" /><i class="fa fa-plus cart-item-plus"></i>
+                        <input type="text" name="cart-quantity" class="cart-quantity" value="{{$cart->product_quantity}}" /><i class="fa fa-plus cart-item-plus"></i>
                     </td>
-                    <td>$150</td>
+                    <td>Tk. {{$cart->product_price}}</td>
                     <td class="cart-item-remove">
                         <a class="fa fa-times" href="#"></a>
                     </td>
                 </tr>
-                <tr>
-                    <td class="cart-item-image">
-                        <a href="#">
-                            <img src="img/70x70.png" alt="Image Alternative text" title="Urbex Esch/Lux with Laney and Laaaaag" />
-                        </a>
-                    </td>
-                    <td><a href="#">মাশরাফি বিন মর্তুজা</a>
-                    </td>
-                    <td class="cart-item-quantity"><i class="fa fa-minus cart-item-minus"></i>
-                        <input type="text" name="cart-quantity" class="cart-quantity" value="1" /><i class="fa fa-plus cart-item-plus"></i>
-                    </td>
-                    <td>$200</td>
-                    <td class="cart-item-remove">
-                        <a class="fa fa-times" href="#"></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="cart-item-image">
-                        <a href="#">
-                            <img src="img/70x70.png" alt="Image Alternative text" title="Old No7" />
-                        </a>
-                    </td>
-                    <td><a href="#">হাউজফুল(ফুল এপিসোড)</a>
-                    </td>
-                    <td class="cart-item-quantity"><i class="fa fa-minus cart-item-minus"></i>
-                        <input type="text" name="cart-quantity" class="cart-quantity" value="1" /><i class="fa fa-plus cart-item-plus"></i>
-                    </td>
-                    <td>$150</td>
-                    <td class="cart-item-remove">
-                        <a class="fa fa-times" href="#"></a>
-                    </td>
-                </tr>
+                @endforeach
                 <tr>
                     <td colspan="5">
                         <a href="#" class="btn btn-success"> <i class="fa fa-refresh"></i> Update the cart</a>
