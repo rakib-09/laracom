@@ -3,13 +3,13 @@
 namespace Modules\Cart\Entities;
 
 use Illuminate\Database\Eloquent\Model;
-use Modules\Product\Entities\Product;
+use Modules\Product\Entities\Product as Product;
 
 class TempCart extends Model
 {
     protected $fillable = ['product_id','product_price','product_image'];
 
-    public function product()
+    public function product_info()
     {
         return Product::where('id', $this->product_id)->first();
     }

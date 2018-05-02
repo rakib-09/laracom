@@ -15,6 +15,9 @@
 Route::get('/check', function () {
     return view('Template.top_area');
 });
+Route::get('/profile/profileinfo', function () {
+    return "rakib";
+});
 
 Auth::routes();
 

@@ -4,7 +4,7 @@
         <div class="col-md-4">
             <aside class="sidebar-left">
                 <div class="box clearfix">
-                    <table class="table">
+                    <table class="table cart-table">
                         <thead>
                         <tr>
                             <th>Product</th>
@@ -13,37 +13,39 @@
                         </tr>
                         </thead>
                         <tbody>
+                        @foreach($cartlists as $cart)
                         <tr>
-                            <td>New Glass Collection</td>
-                            <td>1</td>
-                            <td>$150</td>
+                            <td>{{$cart->product_name_bangla}}</td>
+                            <td>{{$cart->product_quantity}}</td>
+                            <td>Tk. {{$cart->product_price}}</td>
                         </tr>
-                        <tr>
-                            <td>Canon Camera</td>
-                            <td>1</td>
-                            <td>$200</td>
-                        </tr>
-                        <tr>
-                            <td>Jack Daniels Huge Pack</td>
-                            <td>1</td>
-                            <td>$150</td>
-                        </tr>
+                        @endforeach
                         </tbody>
                     </table>
+                    @php
+                        $subTotal = 0;
+                        foreach ($cartlists as $cart)
+                        {
+                            $subTotal += $cart->product_price;
+                        }
+                    @endphp
                     <ul class="cart-total-list text-center mb0">
-                        <li><span>Sub Total</span><span>$500.00</span>
+                        <li><span>Sub Total</span><span>Tk. {{$subTotal}}</span>
                         </li>
-                        <li><span>Shipping</span><span>$0.00</span>
+                        <li><span>Shipping</span><span>Tk. 40</span>
                         </li>
-                        <li><span>Taxes</span><span>$0.00</span>
-                        </li>
-                        <li><span>Total</span><span>$500.00</span>
+                        {{--<li><span>Taxes</span><span>$0.00</span>--}}
+                        {{--</li>--}}
+                        <li><span>Total</span><span>Tk. {{$subTotal + 40}}</span>
                         </li>
                     </ul>
                 </div>
             </aside>
         </div>
         <div class="col-md-8">
+            @guest
+            hello guest
+            @endguest
             {{--<p class="mb20"><a href="#">Login</a> or <a href="#">Register</a> for faster payment.</p>--}}
             <div class="row">
                 <form action="">

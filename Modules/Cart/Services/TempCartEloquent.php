@@ -88,4 +88,9 @@ class TempCartEloquent implements TempCartRepository
     {
         return $this->model->find($id)->delete();
     }
+
+    public function withProduct()
+    {
+        return $this->model->all()->product_info;
+    }
 }

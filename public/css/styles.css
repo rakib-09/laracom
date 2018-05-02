@@ -44,6 +44,10 @@ img {
   width: 100%;
   max-width: none;
 }
+.ais-results img{
+  width:50px !important;
+  height:70px !important;
+}
 /*li > a > img{*/
   /*max-width: none;*/
   /*width:40px !important;*/
@@ -2193,7 +2197,7 @@ footer.main a {
 .shopping-cart .shopping-cart-box {
   position: absolute;
   z-index: 10;
-  width: 350px;
+  width: 300px;
   padding: 10px 15px;
   -webkit-border-radius: 0 0 4px 4px;
   border-radius: 0 0 4px 4px;
@@ -2544,7 +2548,7 @@ ul.pagination li.next a:before {
 .cart-table > tbody > tr > th,
 .cart-table > tfoot > tr > th {
   border-width: 1px;
-  font-weight: 400;
+  font-weight: bold;
   font-size: 16px;
 }
 .cart-table .cart-item-image img {

@@ -5,16 +5,26 @@ namespace Modules\Checkout\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Modules\Cart\Repositories\TempCartRepository;
+use Modules\Product\Repositories\ProductRepository;
 
 class CheckoutController extends Controller
 {
+    private $temp_cart, $product;
+
+    function __construct(TempCartRepository $cart, ProductRepository $product)
+    {
+        $this->temp_cart = $cart;
+        $this->product = $product;
+    }
     /**
      * Display a listing of the resource.
      * @return Response
      */
     public function index()
     {
-        return view('checkout::index');
+        $cartlists = $this->temp_cart->getAll();
+        return view('checkout::index', compact('cartlists'));
     }
 
     /**

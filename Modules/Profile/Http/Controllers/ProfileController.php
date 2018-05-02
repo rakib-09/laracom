@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use App\User;
+use Auth;
 use Modules\Profile\Entities\Userinfo;
 
 class ProfileController extends Controller
@@ -17,7 +18,7 @@ class ProfileController extends Controller
     public function index()
     {
 
-        return view('profile::index');
+       // return view('profile::index');
     }
 
     /**
@@ -73,5 +74,12 @@ class ProfileController extends Controller
      */
     public function destroy()
     {
+    }
+
+    public function profileInfo()
+    {
+//        $user = User::find(Auth()->id);
+//        return view('profile::profileinfo');
+        echo "amar";
     }
 }

@@ -34,7 +34,7 @@
                                 @foreach($cart_info as $cart)
                                 <li>
                                     <a href="javascript:void(0)">
-                                        <img src="<?php echo asset("storage/images/products/$cart->product_image")?>"  alt="{{$cart->product_name}}" title="{{$cart->product_name}}" width="50" height = "80"/>
+                                        <img src="<?php echo asset("storage/images/products/$cart->product_image")?>"  alt="{{$cart->product_name}}" title="{{$cart->product_name}}"/>
                                         <h4 style="color: white;">{{$cart->product_name_bangla}}</h4><span class="shopping-cart-item-price">Tk. {{$cart->product_price}}</span>
                                         <span class="pull-right" ><i class="fa fa-trash-o fa-3x delete_cart" id="{{$cart->id}}" style="color: red;"></i></span>
                                     </a>
@@ -56,7 +56,7 @@
                     </li>
                     @else
                         <li class="shopping-cart"><a href="page-cart.html"><i class="fa fa-user"></i>{{ Auth::user()->name }} <span class="caret"></span></a>
-                            <div class="shopping-cart-box">
+                            <div class="shopping-cart-box" style="width: 150px;">
                                 <ul class="shopping-cart-items">
                                     <li><a href="/profile/{{ Auth::user()->id }}"><i class="fa fa-wrench"></i> My Profile</a>
                                     </li>
