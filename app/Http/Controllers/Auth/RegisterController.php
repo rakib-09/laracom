@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use Modules\Profile\Entities\Userinfo;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -32,7 +33,6 @@ class RegisterController extends Controller
     /**
      * Create a new controller instance.
      *
-     * @return void
      */
     public function __construct()
     {
@@ -62,6 +62,10 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        Userinfo::insert([
+            'email' => $data['email'],
+        ]);
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],

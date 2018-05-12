@@ -4,7 +4,8 @@
     <div class="col-md-9">
         <div class="row">
             <div class="col-md-6 settings_details info">
-                <form action="">
+                <form action="/profile/updateinfo" method="POST">
+                    {{csrf_field()}}
                     <div class="form-group">
                         <label for="">নাম</label>
                         <input type="text" class="form-control" value="{{$userInformation->name}}">
@@ -15,27 +16,27 @@
                     </div>
                     <div class="form-group">
                         <label for="">ফোন নাম্বার</label>
-                        <input type="text"  class="form-control" value="{{$userInformation->userinfo->phone}}">
+                        <input type="text"  class="form-control" value="{{$userInformation->userInfo()->phone}}" name="phone">
                     </div>
                     <div class="form-group">
                         <label for="">জন্ম তারিখ</label>
-                        <input type="text"  class="form-control" value="{{$userInformation->userinfo->dob}}">
+                        <input type="text"  class="form-control" value="{{$userInformation->userInfo()->dob}}" name="dob">
                     </div>
                     <div class="form-group">
                         <label for="">ঠিকানা</label>
-                        <input type="text"  class="form-control" value="{{$userInformation->userinfo->address}}">
+                        <input type="text"  class="form-control" value="{{$userInformation->userInfo()->address}}" name="address">
                     </div>
                     <div class="form-group">
                         <label for="">শহর</label>
-                        <input type="text"  class="form-control" value="{{$userInformation->userinfo->city}}">
+                        <input type="text"  class="form-control" value="{{$userInformation->userInfo()->city}}" name="city">
                     </div>
                     <div class="form-group">
                         <label for="">দেশ</label>
-                        <input type="text"  class="form-control" value="{{$userInformation->userinfo->country}}">
+                        <input type="text"  class="form-control" value="{{$userInformation->userInfo()->country}}" name="country">
                     </div>
                     <div class="form-group">
                         <label for="">পোস্টাল কোড</label>
-                        <input type="text"  class="form-control" value="{{$userInformation->userinfo->postalcode}}">
+                        <input type="text"  class="form-control" value="{{$userInformation->userInfo()->postalcode}}" name="postalcode">
                     </div>
                     <input type="submit" value="Save Changes" class="btn btn-primary">
                 </form>
@@ -122,8 +123,6 @@
     </style>
     <script>
         $(document).ready(function(){
-
-
             $("li.settings").on('click',function(){
                 $('li.active').removeClass('active');
                 $(this).addClass('active');

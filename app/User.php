@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+
 use Modules\Profile\Entities\Userinfo;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -27,8 +28,9 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function userinfo(){
+    public function userInfo()
+    {
+        return Userinfo::where('email', $this->email)->first();
 
-        return $this->hasOne(Userinfo::class, 'user_id');
     }
 }

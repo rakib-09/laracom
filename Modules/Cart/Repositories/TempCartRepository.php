@@ -12,6 +12,8 @@ interface TempCartRepository
 
     function getAll();
 
+    function getAllById($id);
+
     function getById($id);
 
     function create(array $attributes);

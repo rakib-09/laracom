@@ -11,6 +11,6 @@ class Userinfo extends Model
 
     public function users()
     {
-        return $this->belongsTo('App\User');
+        return User::where('email', $this->email)->first();
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Modules\Profile\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
@@ -43,20 +44,30 @@ class ProfileController extends Controller
      * Show the specified resource.
      * @return Response
      */
-    public function show($id = null)
+    public function show()
     {
-        $userInformation = User::find($id);
+        $userInformation = User::find(auth()->id());
 
-         return view('profile::index', compact('userInformation'));
+        return view('profile::index', compact('userInformation'));
     }
 
     /**
      * Show the form for editing the specified resource.
      * @return Response
      */
-    public function edit()
+    public function edit(Request $request)
     {
-        return view('profile::edit');
+        $updateInfo = Userinfo::where('email', auth()->user()->email)->update([
+            'user_id' => auth()->id(),
+            'phone' => $request->input('phone'),
+            'dob' => $request->input('dob'),
+            'address' => $request->input('address'),
+            'city' => $request->input('city'),
+            'country' => $request->input('country'),
+            'postalcode' => $request->input('postalcode'),
+            'updated_at' => \Carbon\Carbon::now()
+        ]);
+        return redirect('/profile/profileinfo');
     }
 
     /**
@@ -76,10 +87,4 @@ class ProfileController extends Controller
     {
     }
 
-    public function profileInfo()
-    {
-//        $user = User::find(Auth()->id);
-//        return view('profile::profileinfo');
-        echo "amar";
-    }
 }

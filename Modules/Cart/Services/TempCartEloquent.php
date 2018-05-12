@@ -38,6 +38,17 @@ class TempCartEloquent implements TempCartRepository
     }
 
     /**
+     * Get all Products by id.
+     *
+     * @param string $id
+     * @return TempCart
+     */
+    public function getAllById($id = "")
+    {
+        return $this->model->all()->where('user_id', $id);
+    }
+
+    /**
      * Get task by id.
      *
      * @param integer $id

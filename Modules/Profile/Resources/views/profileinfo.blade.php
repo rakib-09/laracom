@@ -8,12 +8,12 @@
 
                     <div class="form-group">
                         <label for="">নাম</label>
-                        <input type="text" class="form-control" value="{{$user->name}}">
-                        <input type="hidden" value="{{$user->id}}">
+                        <input type="text" class="form-control" value="{{auth()->user->name}}">
+                        <input type="hidden" value="{{auth()->user()->id}}">
                     </div>
                     <div class="form-group">
                         <label for="">ই-মেইল</label>
-                        <input type="text" class="form-control" value="{{$user->email}}">
+                        <input type="text" class="form-control" value="{{auth()->user()->email}}">
                     </div>
                     <div class="form-group">
                         <label for="">ফোন নাম্বার</label>

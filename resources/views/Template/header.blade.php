@@ -14,7 +14,7 @@
                 <div class="flexnav-menu-button" id="flexnav-menu-button">Menu</div>
                 <nav>
                     <ul class="nav nav-pills flexnav" id="flexnav" data-breakpoint="800">
-                        <li class="active"><a href="index.html">হোম</a> </li>
+                        <li class="active"><a href="/">হোম</a> </li>
                         <li><a href="category-page-shop.html">বই সমূহ</a></li>
                         <li><a href="product-shop-sidebar.html">লেখক </a></li>
                         <li><a href="features-typography.html">অনুবাদক</a></li>
@@ -58,7 +58,7 @@
                         <li class="shopping-cart"><a href="page-cart.html"><i class="fa fa-user"></i>{{ Auth::user()->name }} <span class="caret"></span></a>
                             <div class="shopping-cart-box" style="width: 150px;">
                                 <ul class="shopping-cart-items">
-                                    <li><a href="/profile/{{ Auth::user()->id }}"><i class="fa fa-wrench"></i> My Profile</a>
+                                    <li><a href="/profile/profileinfo"><i class="fa fa-wrench"></i> My Profile</a>
                                     </li>
                                     <li><a href="{{ route('logout') }}"
                                            onclick="event.preventDefault();

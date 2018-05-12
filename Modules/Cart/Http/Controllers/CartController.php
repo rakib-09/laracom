@@ -2,6 +2,7 @@
 
 namespace Modules\Cart\Http\Controllers;
 
+use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
@@ -24,7 +25,16 @@ class CartController extends Controller
      */
     public function index()
     {
-        $cartlists = $this->temp_cart->getAll();
+        if(Auth::check())
+        {
+            $cartlists = $this->temp_cart->getAllById(auth()->id());
+        }
+        else
+        {
+
+        }
+
+
         return view('cart::index', compact('cartlists'));
     }
 
@@ -37,7 +47,15 @@ class CartController extends Controller
     {
         $product_id = $request->input('product_id');
         $product_info = $this->product->getById($product_id);
+        if(Auth::check())
+        {
+            $profile = auth()->id();
+        }
+        else {
+            $profile = 0;
+        }
         $insert_into_cart = ([
+            'user_id' => $profile,
             'product_id' => $product_info-> id,
             'product_name_bangla' => $product_info-> bangla_name,
             'product_name' => $product_info-> name,

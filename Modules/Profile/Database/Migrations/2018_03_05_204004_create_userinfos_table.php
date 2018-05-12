@@ -15,13 +15,14 @@ class CreateUserinfosTable extends Migration
     {
         Schema::create('userinfos', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
-            $table->string('phone');
-            $table->date('dob');
-            $table->text('address');
-            $table->string('city');
-            $table->string('country');
-            $table->integer('postalcode');
+            $table->integer('user_id')->nullable();
+            $table->integer('email');
+            $table->string('phone')->nullable();
+            $table->date('dob')->nullable();
+            $table->text('address')->nullable();
+            $table->string('city')->nullable();
+            $table->string('country')->nullable();
+            $table->integer('postalcode')->nullable();
             $table->timestamps();
         });
     }
