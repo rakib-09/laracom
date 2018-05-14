@@ -9,6 +9,7 @@ use Illuminate\Routing\Controller;
 use Modules\Cart\Repositories\TempCartRepository;
 use Modules\Product\Repositories\ProductRepository;
 
+
 class CartController extends Controller
 {
     private $temp_cart, $product;
@@ -28,14 +29,15 @@ class CartController extends Controller
         if(Auth::check())
         {
             $cartlists = $this->temp_cart->getAllById(auth()->id());
+            return view('cart::index', compact('cartlists'));
         }
         else
         {
+            $cartlist_session =session(['cartList']);
+            return view('cart::index', compact('cartlist_session'));
 
         }
 
-
-        return view('cart::index', compact('cartlists'));
     }
 
     /**
@@ -64,6 +66,8 @@ class CartController extends Controller
             'product_image' => $product_info->image
         ]);
         $tempCartVal = $this->temp_cart->create($insert_into_cart);
+        $session_cart = array_push($insert_into_cart, $tempCartVal);
+        $request->session()->push('cartList', $insert_into_cart);
         echo $product_info."---".$tempCartVal;
 
     }
@@ -75,6 +79,13 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
+        $val = $request->session()->get('cartList');
+
+        foreach ($val as $k => $v)
+        {
+           print_r( $v);
+        }
+        //getCartInfo();
 
     }
 
@@ -82,9 +93,20 @@ class CartController extends Controller
      * Show the specified resource.
      * @return Response
      */
-    public function show()
+    public function show(Request $request)
     {
-        return view('cart::show');
+        if(Auth::check())
+        {
+            $cartlists = $this->temp_cart->getAllById(auth()->id());
+            return view('cart::index', compact('cartlists'));
+        }
+        else
+        {
+            $cartlist_session = $request->session()->get('cartList');
+            return view('cart::index', compact('cartlist_session'));
+
+        }
+
     }
 
     /**

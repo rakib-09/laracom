@@ -13,6 +13,7 @@
                 </tr>
                 </thead>
                 <tbody>
+            @if(isset($cartlists))
                 @foreach($cartlists as $cart)
                 <tr>
                     <td class="cart-item-image">
@@ -31,6 +32,26 @@
                     </td>
                 </tr>
                 @endforeach
+                @else
+                @foreach($cartlist_session as $cart)
+                <tr>
+                    <td class="cart-item-image">
+                        <a href="#">
+                            <img src="<?php echo asset("storage/images/products/".$cart['product_image'])?>" alt="Image Alternative text" title="AMaze" width="100" height="150" />
+                        </a>
+                    </td>
+                    <td><a href="/details/{{$cart['product_id']}}">{{$cart['product_name_bangla']}}</a>
+                    </td>
+                    <td class="cart-item-quantity"><i class="fa fa-minus cart-item-minus"></i>
+                        <input type="text" name="cart-quantity" class="cart-quantity" value="{{$cart['product_quantity']}}" /><i class="fa fa-plus cart-item-plus"></i>
+                    </td>
+                    <td>Tk. {{$cart['product_price']}}</td>
+                    <td class="cart-item-remove">
+                        <span><i class="fa fa-trash-o fa-3x delete_cart" id="{{$cart[0]}}" style="color: red;"></i></span>
+                    </td>
+                </tr>
+                @endforeach
+                @endif
                 <tr>
                     <td colspan="5">
                         <a href="#" class="btn btn-success"> <i class="fa fa-refresh"></i> Update the cart</a>
@@ -47,9 +68,18 @@
                         <li><p><label><input type="checkbox" id="isWrap" name="wrapGift"> Gift wrap for 20 Tk.</label></p></li>
                         @php
                         $subTotal = 0;
+                        if(isset($cartlists))
+                        {
                         foreach ($cartlists as $cart)
                         {
                             $subTotal += $cart->product_price;
+                        }
+                        }
+                        else{
+                        foreach($cartlist_session as $cart)
+                        {
+                        $subTotal += $cart['product_price'];
+                        }
                         }
                         @endphp
                         <li><span>Sub Total</span><span class="pull-right">Tk. {{$subTotal}}</span>
