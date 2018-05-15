@@ -27,10 +27,16 @@
             <div class="col-md-6">
                 <!-- LOGIN REGISTER LINKS -->
                 <ul class="login-register">
-                    <li class="shopping-cart"><a href=""><i class="fa fa-shopping-cart"></i>My Cart</a>
+                    <?php $cart_info = getCartInfo();
+                    $val = 0;
+                    foreach ($cart_info as $cart)
+                        {
+                         $val++;
+                        }
+                    ?>
+                    <li class="shopping-cart"><a href=""><i class="fa fa-shopping-cart"></i>My Cart <span class="badge cart_counter" style="color: white; background-color: red">{{$val}} </span></a>
                         <div class="shopping-cart-box">
                             <ul class="shopping-cart-items shopping_cart">
-                                <?php $cart_info = getCartInfo() ?>
                                 @foreach($cart_info as $cart)
                                 <li>
                                     <a href="javascript:void(0)">
@@ -39,7 +45,7 @@
                                         <span class="pull-right" ><i class="fa fa-trash-o fa-3x delete_cart" id="{{$cart->id}}" style="color: red;"></i></span>
                                     </a>
                                 </li>
-                                    @endforeach
+                                @endforeach
                             </ul>
                             <ul class="list-inline text-center">
                                 <li><a href="./cart"><i class="fa fa-shopping-cart"></i> View Cart</a>

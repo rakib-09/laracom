@@ -89,7 +89,7 @@
                         <li ><span>Total</span><span class="pull-right">Tk. {{$subTotal + 40}}</span>
                         </li>
                     </ul>
-                    <a href="#" class="btn btn-warning btn-lg"><i class="fa fa-flag-checkered"></i> Proceed To Checkout</a>
+                    <a href="/checkout" class="btn btn-warning btn-lg"><i class="fa fa-flag-checkered"></i> Proceed To Checkout</a>
                 </div>
             </div>
         </div>

@@ -13,6 +13,7 @@
                         </tr>
                         </thead>
                         <tbody>
+                        @if(isset($cartlists))
                         @foreach($cartlists as $cart)
                         <tr>
                             <td>{{$cart->product_name_bangla}}</td>
@@ -20,13 +21,32 @@
                             <td>Tk. {{$cart->product_price}}</td>
                         </tr>
                         @endforeach
+                        @else
+                            @foreach($cartlist_session as $cart)
+                                <tr>
+                                    <td>{{$cart['product_name_bangla']}}</td>
+                                    <td>{{$cart['product_quantity']}}</td>
+                                    <td>Tk. {{$cart['product_price']}}</td>
+                                </tr>
+                            @endforeach
+                        @endif
                         </tbody>
                     </table>
                     @php
                         $subTotal = 0;
-                        foreach ($cartlists as $cart)
+                        if(isset($cartlists))
                         {
-                            $subTotal += $cart->product_price;
+                            foreach ($cartlists as $cart)
+                            {
+                                $subTotal += $cart->product_price;
+                            }
+                        }
+                        else
+                        {
+                            foreach ($cartlist_session as $cart)
+                            {
+                                $subTotal += $cart['product_price'];
+                            }
                         }
                     @endphp
                     <ul class="cart-total-list text-center mb0">
@@ -44,7 +64,8 @@
         </div>
         <div class="col-md-8">
             @guest
-            hello guest
+            <b>যদি আপনি আমাদের কাস্টমার হয়ে থাকেন তাহলে <a href="javascript(void:0);" class="">LOGIN</a> করুন।
+            অথবা, নিন্মের ফর্মটি পুরন করুন। </b>
             @endguest
             {{--<p class="mb20"><a href="#">Login</a> or <a href="#">Register</a> for faster payment.</p>--}}
             <div class="row">

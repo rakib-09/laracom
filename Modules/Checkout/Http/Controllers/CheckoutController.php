@@ -7,6 +7,7 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\Cart\Repositories\TempCartRepository;
 use Modules\Product\Repositories\ProductRepository;
+use Auth;
 
 class CheckoutController extends Controller
 {
@@ -21,10 +22,21 @@ class CheckoutController extends Controller
      * Display a listing of the resource.
      * @return Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $cartlists = $this->temp_cart->getAll();
-        return view('checkout::index', compact('cartlists'));
+        if(Auth::check())
+        {
+            $cartlists = $this->temp_cart->getAllById(auth()->id());
+            return view('checkout::index', compact('cartlists'));
+
+        }
+        else
+        {
+            $cartlist_session = $request->session()->get('cartList');
+            return view('checkout::index', compact('cartlist_session'));
+
+        }
+
     }
 
     /**
