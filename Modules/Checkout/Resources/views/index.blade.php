@@ -36,17 +36,16 @@
                         $subTotal = 0;
                         if(isset($cartlists))
                         {
-                            foreach ($cartlists as $cart)
-                            {
-                                $subTotal += $cart->product_price;
-                            }
-                        }
-                        else
+                        foreach ($cartlists as $cart)
                         {
-                            foreach ($cartlist_session as $cart)
-                            {
-                                $subTotal += $cart['product_price'];
-                            }
+                            $subTotal += $cart->product_price;
+                        }
+                        }
+                        else{
+                        foreach($cartlist_session as $cart)
+                        {
+                        $subTotal += $cart['product_price'];
+                        }
                         }
                     @endphp
                     <ul class="cart-total-list text-center mb0">
