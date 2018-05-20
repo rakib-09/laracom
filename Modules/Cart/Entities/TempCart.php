@@ -7,7 +7,7 @@ use Modules\Product\Entities\Product as Product;
 
 class TempCart extends Model
 {
-    protected $fillable = ['product_id','product_price','product_image'];
+    protected $fillable = ['product_id','product_price','product_image', 'product_quantity'];
 
     public function product_info()
     {

@@ -1,5 +1,4 @@
 <?php
-
 namespace Modules\Cart\Http\Controllers;
 
 use Auth;
@@ -29,12 +28,12 @@ class CartController extends Controller
         if(Auth::check())
         {
             $cartlists = $this->temp_cart->getAllById(auth()->id());
-            return view('cart::index', compact('cartlists'));
+            return $cartlists;
         }
         else
         {
-            $cartlist_session =session(['cartList']);
-            return view('cart::index', compact('cartlist_session'));
+            $cartlist_session =session('cartList');
+            return $cartlist_session;
 
         }
 
@@ -79,7 +78,9 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
+        //$request->session()->forget('cartList');
         $val = $request->session()->get('cartList');
+        dd($val);
 
         foreach ($val as $k => $v)
         {
@@ -110,21 +111,40 @@ class CartController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     * @return Response
-     */
-    public function edit()
-    {
-        return view('cart::edit');
-    }
-
-    /**
      * Update the specified resource in storage.
      * @param  Request $request
      * @return Response
      */
     public function update(Request $request)
     {
+        foreach ($_POST['cart_id'] as  $key => $value)
+        {
+            $this->temp_cart->update($_POST['cart_id'][$key], [
+                'product_quantity' => $_POST['cart-quantity'][$key],
+                'product_price' => $_POST['cart_price'][$key] * $_POST['cart-quantity'][$key]
+            ]);
+        }
+
+        if($request->session()->has('cartList'))
+        {
+            $cart_session = $request->session()->get('cartList');
+
+            foreach ($cart_session as $key=>$value) {
+                //echo $_POST['cart_id'][$key];
+                if ($cart_session[$key][0] == $_POST['cart_id'][$key])
+                {
+                    $cart_session[$key]['product_quantity'] = $_POST['cart-quantity'][$key];
+                    $cart_session[$key]['product_price'] = $_POST['cart_price'][$key] * $_POST['cart-quantity'][$key];
+                    //echo "update done";
+                }
+            }
+            //print_r($cart_session);
+            $request->session()->forget('cartList');
+
+            $request->session()->put('cartList', $cart_session);
+        }
+
+        return redirect('/cart');
     }
 
     /**

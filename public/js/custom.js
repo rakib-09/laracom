@@ -381,6 +381,7 @@ $(document).ready(function(){
     $("ul").on('click','.delete_cart', function () {
        var cart_id = $(this).attr('id');
        var name = $(this);
+        var base_url = '{!! url() !!}';
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -388,8 +389,8 @@ $(document).ready(function(){
         });
 
         $.ajax({
-            url:'./cart',
-            type:'DELETE',
+            url: base_url+'/cart/delete',
+            type:'POST',
             data:{cart_id: cart_id},
 
             success: function (data) {
@@ -399,6 +400,10 @@ $(document).ready(function(){
                 }
             }
         });
+
+    });
+
+    $(".updateCart").on('click', function(){
 
     });
 

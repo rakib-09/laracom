@@ -13,8 +13,11 @@
                 </tr>
                 </thead>
                 <tbody>
+                <form action="cart/update" method="POST">
+                    {{csrf_field()}}
             @if(isset($cartlists))
                 @foreach($cartlists as $cart)
+
                 <tr>
                     <td class="cart-item-image">
                         <a href="#">
@@ -25,12 +28,15 @@
                     </td>
                     <td class="cart-item-quantity"><i class="fa fa-minus cart-item-minus"></i>
                         <input type="text" name="cart-quantity" class="cart-quantity" value="{{$cart->product_quantity}}" /><i class="fa fa-plus cart-item-plus"></i>
+                        <input type="hidden" value="{{$cart->id}}" name="cart_id[]" class="cart_id">
+                        <input type="hidden" value="{{$cart -> product_price}}" name="cart_price[]" class="cart_price">
                     </td>
                     <td>Tk. {{$cart->product_price}}</td>
                     <td class="cart-item-remove">
                         <span><i class="fa fa-trash-o fa-3x delete_cart" id="{{$cart->id}}" style="color: red;"></i></span>
                     </td>
                 </tr>
+
                 @endforeach
                 @else
                 @foreach($cartlist_session as $cart)
@@ -43,20 +49,23 @@
                     <td><a href="/details/{{$cart['product_id']}}">{{$cart['product_name_bangla']}}</a>
                     </td>
                     <td class="cart-item-quantity"><i class="fa fa-minus cart-item-minus"></i>
-                        <input type="text" name="cart-quantity" class="cart-quantity" value="{{$cart['product_quantity']}}" /><i class="fa fa-plus cart-item-plus"></i>
+                        <input type="text" name="cart-quantity[]" class="cart-quantity" value="{{$cart['product_quantity']}}" /><i class="fa fa-plus cart-item-plus"></i>
+                        <input type="hidden" value="{{$cart[0]}}" name="cart_id[]" class="cart_id">
+                        <input type="hidden" value="{{$cart['product_price']}}" name="cart_price[]" class="cart_price">
                     </td>
                     <td>Tk. {{$cart['product_price']}}</td>
                     <td class="cart-item-remove">
-                        <span><i class="fa fa-trash-o fa-3x delete_cart" id="{{$cart[0]}}" style="color: red;"></i></span>
+                        <span><i class="fa fa-trash-o fa-3x delete_cart" id="{{$cart[0]}}" style="color: red; cursor: pointer;"></i></span>
                     </td>
                 </tr>
                 @endforeach
                 @endif
                 <tr>
                     <td colspan="5">
-                        <a href="#" class="btn btn-success"> <i class="fa fa-refresh"></i> Update the cart</a>
+                        <button href="javascript:void(0)" class="btn btn-success updateCart" type="submit"> <i class="fa fa-refresh"></i> Update the cart</button>
                     </td>
                 </tr>
+                </form>
                 </tbody>
             </table>
 
@@ -67,20 +76,20 @@
                     <ul class="cart-total-list">
                         <li><p><label><input type="checkbox" id="isWrap" name="wrapGift"> Gift wrap for 20 Tk.</label></p></li>
                         @php
-                        $subTotal = 0;
-                        if(isset($cartlists))
-                        {
-                        foreach ($cartlists as $cart)
-                        {
-                            $subTotal += $cart->product_price;
-                        }
-                        }
-                        else{
-                        foreach($cartlist_session as $cart)
-                        {
-                        $subTotal += $cart['product_price'];
-                        }
-                        }
+                            $subTotal = 0;
+                            if(isset($cartlists))
+                            {
+                            foreach ($cartlists as $cart)
+                            {
+                                $subTotal += $cart->product_price;
+                            }
+                            }
+                            else{
+                            foreach($cartlist_session as $cart)
+                            {
+                            $subTotal += $cart['product_price'];
+                            }
+                            }
                         @endphp
                         <li><span>Sub Total</span><span class="pull-right">Tk. {{$subTotal}}</span>
                         </li>

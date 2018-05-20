@@ -28,33 +28,52 @@
                 <!-- LOGIN REGISTER LINKS -->
                 <ul class="login-register">
                     <?php $cart_info = getCartInfo();
-                    $val = 0;
-                    foreach ($cart_info as $cart)
-                        {
-                         $val++;
-                        }
+                    if($cart_info != null)
+                    {
+                        $val = 0;
+                        foreach ($cart_info as $cart)
+                            {
+                             $val++;
+                            }
+
                     ?>
                     <li class="shopping-cart"><a href=""><i class="fa fa-shopping-cart"></i>My Cart <span class="badge cart_counter" style="color: white; background-color: red">{{$val}} </span></a>
                         <div class="shopping-cart-box">
                             <ul class="shopping-cart-items shopping_cart">
                                 @foreach($cart_info as $cart)
                                 <li>
-                                    <a href="javascript:void(0)">
-                                        <img src="<?php echo asset("storage/images/products/$cart->product_image")?>"  alt="{{$cart->product_name}}" title="{{$cart->product_name}}"/>
-                                        <h4 style="color: white;">{{$cart->product_name_bangla}}</h4><span class="shopping-cart-item-price">Tk. {{$cart->product_price}}</span>
-                                        <span class="pull-right" ><i class="fa fa-trash-o fa-3x delete_cart" id="{{$cart->id}}" style="color: red;"></i></span>
-                                    </a>
-                                </li>
+                                        <a href="javascript:void(0)">
+                                            <img src="<?php echo asset("storage/images/products/".$cart['product_image'])?>"  alt="{{$cart['product_name']}}" title="{{$cart['product_name']}}"/>
+                                            <h4 style="color: white;">{{$cart['product_name_bangla']}}</h4><span class="shopping-cart-item-price">Tk. {{$cart['product_price']}}</span>
+                                            <span class="pull-right" ><i class="fa fa-trash-o fa-3x delete_cart" id="{{$cart[0]}}" style="color: red;"></i></span>
+                                        </a>
+                                    </li>
                                 @endforeach
                             </ul>
                             <ul class="list-inline text-center">
                                 <li><a href="./cart"><i class="fa fa-shopping-cart"></i> View Cart</a>
                                 </li>
-                                <li><a href="page-checkout.html"><i class="fa fa-check-square"></i> Checkout</a>
+                                <li><a href="./checkout"><i class="fa fa-check-square"></i> Checkout</a>
                                 </li>
                             </ul>
                         </div>
                     </li>
+                        <?php
+                        } else {
+                        ?>
+                        <li class="shopping-cart"><a href=""><i class="fa fa-shopping-cart"></i>My Cart <span class="badge cart_counter" style="color: white; background-color: red"></span></a>
+                            <div class="shopping-cart-box">
+                                <ul class="shopping-cart-items shopping_cart">
+                                </ul>
+                                <ul class="list-inline text-center">
+                                    <li><a href="./cart"><i class="fa fa-shopping-cart"></i> View Cart</a>
+                                    </li>
+                                    <li><a href="./checkout"><i class="fa fa-check-square"></i> Checkout</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <?php }?>
                     @guest
                     <li><a class="popup-text" href="#login-dialog" data-effect="mfp-move-from-top"><i class="fa fa-sign-in"></i>Sign in</a>
                     </li>
