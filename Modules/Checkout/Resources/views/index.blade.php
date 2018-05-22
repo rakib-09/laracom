@@ -63,14 +63,19 @@
         </div>
         <div class="col-md-8">
             @guest
-            <b>যদি আপনি আমাদের কাস্টমার হয়ে থাকেন তাহলে <a href="javascript(void:0);" class="">LOGIN</a> করুন।
-            অথবা, নিন্মের ফর্মটি পুরন করুন। </b>
+            <b>যদি আপনি আমাদের কাস্টমার হয়ে থাকেন তাহলে <a class="popup-text" href="#login-dialog" data-effect="mfp-move-from-top">LOGIN</a> করুন।
+            অথবা, নিন্মের ফর্মটি পুরন করুন।
+                <div class="gap"></div>
+            </b>
+
             @endguest
             {{--<p class="mb20"><a href="#">Login</a> or <a href="#">Register</a> for faster payment.</p>--}}
             <div class="row">
                 <form action="">
                     <div class="col-md-6">
-                        <p><label><input type="checkbox" id="isWrap" name="wrapGift"> Send as a Gift.</label></p>
+                        @if (Auth::check())
+                            <p><label><input type="checkbox" id="gift" name="gift"> Send as a Gift.</label></p>
+                        @endif
                         <legend>Personal Information</legend>
                         <div class="form-group">
                             <label for="">নাম</label>
@@ -93,7 +98,7 @@
                     <div class="col-md-5 col-md-offset-1">
                         <legend>Address</legend>
                         <div class="form-group">
-                            <label for="">দেশ</label>
+                            <label for="">ঠিকানা</label>
                             <input type="text" class="form-control">
                         </div>
                         <div class="form-group">
@@ -101,7 +106,7 @@
                             <input type="text" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="">ঠিকানা</label>
+                            <label for="">দেশ</label>
                             <input type="text" class="form-control">
                         </div>
                         <div class="form-group">

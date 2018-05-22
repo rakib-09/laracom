@@ -42,12 +42,12 @@
                             <ul class="shopping-cart-items shopping_cart">
                                 @foreach($cart_info as $cart)
                                 <li>
-                                        <a href="javascript:void(0)">
-                                            <img src="<?php echo asset("storage/images/products/".$cart['product_image'])?>"  alt="{{$cart['product_name']}}" title="{{$cart['product_name']}}"/>
-                                            <h4 style="color: white;">{{$cart['product_name_bangla']}}</h4><span class="shopping-cart-item-price">Tk. {{$cart['product_price']}}</span>
-                                            <span class="pull-right" ><i class="fa fa-trash-o fa-3x delete_cart" id="{{$cart[0]}}" style="color: red;"></i></span>
-                                        </a>
-                                    </li>
+                                    <a href="javascript:void(0);">
+                                        <img src="<?php echo asset("storage/images/products/".$cart['product_image'])?>"  alt="{{$cart['product_name']}}" title="{{$cart['product_name']}}"/>
+                                        <h4 style="color: white;">{{$cart['product_name_bangla']}}</h4><span class="shopping-cart-item-price">Tk. {{$cart['product_price']}}</span>
+                                        <span class="pull-right" ><i class="fa fa-trash-o fa-3x delete_cart" id="{{$cart[0]}}" data-effect="{{$cart['id']}}" style="color: red;"></i></span>
+                                    </a>
+                                </li>
                                 @endforeach
                             </ul>
                             <ul class="list-inline text-center">

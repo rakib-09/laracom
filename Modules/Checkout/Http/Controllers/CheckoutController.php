@@ -27,6 +27,17 @@ class CheckoutController extends Controller
         if(Auth::check())
         {
             $cartlists = $this->temp_cart->getAllById(auth()->id());
+            if($request->session()->has('cartList'))
+            {
+                $cartlist_session = $request->session()->get('cartList');
+                $user_id = ([
+                    'user_id' => Auth()->id()
+                ]);
+                foreach($cartlist_session as $key=> $value)
+                {
+                    $this->temp_cart->update($cartlist_session[$key][0],$user_id);
+                }
+            }
             return view('checkout::index', compact('cartlists'));
 
         }
@@ -43,9 +54,26 @@ class CheckoutController extends Controller
      * Show the form for creating a new resource.
      * @return Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('checkout::create');
+        if(Auth::check())
+        {
+            $cartlists = $this->temp_cart->getAllById(auth()->id());
+            if($request->session()->has('cartList'))
+            {
+                $cartlist_session = $request->session()->get('cartList');
+                $user_id = ([
+                    'user_id' => Auth()->id()
+                ]);
+                foreach($cartlist_session as $key=> $value)
+                {
+                    $this->temp_cart->update($cartlist_session[$key][0],$user_id);
+                }
+            }
+            $request->session()->forget('cartList');
+            return redirect()->back();
+
+        }
     }
 
     /**
