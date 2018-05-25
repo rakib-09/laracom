@@ -65,7 +65,7 @@ class CartController extends Controller
             'product_image' => $product_info->image
         ]);
         $tempCartVal = $this->temp_cart->create($insert_into_cart);
-        $session_cart = array_push($insert_into_cart, $tempCartVal);
+        $insert_into_cart['id'] = $tempCartVal;
         $request->session()->push('cartList', $insert_into_cart);
         echo $product_info."---".$tempCartVal;
 
@@ -130,7 +130,7 @@ class CartController extends Controller
 
             foreach ($cart_session as $key=>$value) {
                 //echo $_POST['cart_id'][$key];
-                if ($cart_session[$key][0] == $_POST['cart_id'][$key])
+                if ($cart_session[$key]['id'] == $_POST['cart_id'][$key])
                 {
                     $cart_session[$key]['product_quantity'] = $_POST['cart-quantity'][$key];
                     $cart_session[$key]['product_price'] = $_POST['cart_price'][$key] * $_POST['cart-quantity'][$key];

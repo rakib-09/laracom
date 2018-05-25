@@ -50,12 +50,12 @@
                     </td>
                     <td class="cart-item-quantity"><i class="fa fa-minus cart-item-minus"></i>
                         <input type="text" name="cart-quantity[]" class="cart-quantity" value="{{$cart['product_quantity']}}" /><i class="fa fa-plus cart-item-plus"></i>
-                        <input type="hidden" value="{{$cart[0]}}" name="cart_id[]" class="cart_id">
+                        <input type="hidden" value="{{$cart['id']}}" name="cart_id[]" class="cart_id">
                         <input type="hidden" value="{{$cart['product_price']}}" name="cart_price[]" class="cart_price">
                     </td>
                     <td>Tk. {{$cart['product_price']}}</td>
                     <td class="cart-item-remove">
-                        <span><i class="fa fa-trash-o fa-3x delete_cart" id="{{$cart[0]}}" style="color: red; cursor: pointer;"></i></span>
+                        <span><i class="fa fa-trash-o fa-3x delete_cart" id="{{$cart['id']}}" style="color: red; cursor: pointer;"></i></span>
                     </td>
                 </tr>
                 @endforeach

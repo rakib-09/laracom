@@ -72,11 +72,45 @@
             {{--<p class="mb20"><a href="#">Login</a> or <a href="#">Register</a> for faster payment.</p>--}}
             <div class="row">
                 <form action="">
+                    @if (Auth::check())
                     <div class="col-md-6">
-                        @if (Auth::check())
-                            <p><label><input type="checkbox" id="gift" name="gift"> Send as a Gift.</label></p>
-                        @endif
+                        <p><label><input type="checkbox" id="gift" name="gift"> Send as a Gift.</label></p>
                         <legend>Personal Information</legend>
+                        <div class="form-group">
+                            <label for="">নাম</label>
+                            <input type="text" class="form-control name" value="{{auth()->user()->name}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="">ফোন নাম্বার</label>
+                            <input type="text" class="form-control phone" value="{{auth()->user()->userInfo()->phone}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="">ই-মেইল</label>
+                            <input type="text" class="form-control email" value="{{auth()->user()->email}}">
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-md-offset-1">
+                        <legend>Address</legend>
+                        <div class="form-group">
+                            <label for="">ঠিকানা</label>
+                            <input type="text" class="form-control address" value="{{auth()->user()->userInfo()->address}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="">শহর</label>
+                            <input type="text" class="form-control city" value="{{auth()->user()->userInfo()->city}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="">দেশ</label>
+                            <input type="text" class="form-control country" value="{{auth()->user()->userInfo()->country}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="">পোস্টাল কোড</label>
+                            <input type="text" class="form-control postalcode" value="{{auth()->user()->userInfo()->postalcode}}">
+                        </div>
+                        <button type="submit" class="btn btn-warning btn-lg"><i class="fa fa-save"></i> Confirm Order</button>
+                    </div>
+                    @else
+                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="">নাম</label>
                             <input type="text" class="form-control">
@@ -90,11 +124,6 @@
                             <input type="text" class="form-control">
                         </div>
                     </div>
-                    {{--<div class="col-md-5 col-md-offset-1">--}}
-                        {{--<h3>Pay Via Paypal</h3>--}}
-                        {{--<p>Important: You will be redirected to PayPal's website to securely complete your payment.</p>--}}
-                        {{--<a href="#" class="btn btn-primary">Checkout via Paypal</a>--}}
-                    {{--</div>--}}
                     <div class="col-md-5 col-md-offset-1">
                         <legend>Address</legend>
                         <div class="form-group">
@@ -115,6 +144,7 @@
                         </div>
                         <button type="submit" class="btn btn-warning btn-lg"><i class="fa fa-save"></i> Confirm Order</button>
                     </div>
+                @endif
                 </form>
             </div>
         </div>

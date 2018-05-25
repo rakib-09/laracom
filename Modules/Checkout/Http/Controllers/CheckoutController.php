@@ -8,6 +8,7 @@ use Illuminate\Routing\Controller;
 use Modules\Cart\Repositories\TempCartRepository;
 use Modules\Product\Repositories\ProductRepository;
 use Auth;
+use App\User;
 
 class CheckoutController extends Controller
 {
@@ -27,6 +28,7 @@ class CheckoutController extends Controller
         if(Auth::check())
         {
             $cartlists = $this->temp_cart->getAllById(auth()->id());
+
             if($request->session()->has('cartList'))
             {
                 $cartlist_session = $request->session()->get('cartList');
@@ -35,7 +37,7 @@ class CheckoutController extends Controller
                 ]);
                 foreach($cartlist_session as $key=> $value)
                 {
-                    $this->temp_cart->update($cartlist_session[$key][0],$user_id);
+                    $this->temp_cart->update($cartlist_session[$key]['id'],$user_id);
                 }
             }
             return view('checkout::index', compact('cartlists'));
@@ -67,7 +69,7 @@ class CheckoutController extends Controller
                 ]);
                 foreach($cartlist_session as $key=> $value)
                 {
-                    $this->temp_cart->update($cartlist_session[$key][0],$user_id);
+                    $this->temp_cart->update($cartlist_session[$key]['id'],$user_id);
                 }
             }
             $request->session()->forget('cartList');
