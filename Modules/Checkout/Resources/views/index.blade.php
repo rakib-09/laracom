@@ -67,80 +67,99 @@
             অথবা, নিন্মের ফর্মটি পুরন করুন।
                 <div class="gap"></div>
             </b>
-
             @endguest
             {{--<p class="mb20"><a href="#">Login</a> or <a href="#">Register</a> for faster payment.</p>--}}
             <div class="row">
-                <form action="">
+                <form action="/payment/store" method="POST">
+                    {{csrf_field()}}
                     @if (Auth::check())
+                        @if(isset($cartlists))
+                            @foreach($cartlists as $cart)
+                                <input type="hidden" name="tempCartId[]" value="{{$cart['id']}}">
+                            @endforeach
+                        @else
+                            @foreach($cartlist_session as $cart)
+                                <input type="hidden" name="tempCartId[]" value="{{$cart['id']}}">
+                                @endforeach
+                        @endif
                     <div class="col-md-6">
                         <p><label><input type="checkbox" id="gift" name="gift"> Send as a Gift.</label></p>
                         <legend>Personal Information</legend>
                         <div class="form-group">
                             <label for="">নাম</label>
-                            <input type="text" class="form-control name" value="{{auth()->user()->name}}">
+                            <input type="text" class="form-control name" value="{{auth()->user()->name}}" name="name">
                         </div>
                         <div class="form-group">
                             <label for="">ফোন নাম্বার</label>
-                            <input type="text" class="form-control phone" value="{{auth()->user()->userInfo()->phone}}">
+                            <input type="text" class="form-control phone" value="{{auth()->user()->userInfo()->phone}}" name="phone">
                         </div>
                         <div class="form-group">
                             <label for="">ই-মেইল</label>
-                            <input type="text" class="form-control email" value="{{auth()->user()->email}}">
+                            <input type="text" class="form-control email" value="{{auth()->user()->email}}" name="email">
                         </div>
                     </div>
                     <div class="col-md-5 col-md-offset-1">
                         <legend>Address</legend>
                         <div class="form-group">
                             <label for="">ঠিকানা</label>
-                            <input type="text" class="form-control address" value="{{auth()->user()->userInfo()->address}}">
+                            <input type="text" class="form-control address" value="{{auth()->user()->userInfo()->address}}" name="address">
                         </div>
                         <div class="form-group">
                             <label for="">শহর</label>
-                            <input type="text" class="form-control city" value="{{auth()->user()->userInfo()->city}}">
+                            <input type="text" class="form-control city" value="{{auth()->user()->userInfo()->city}}" name="city">
                         </div>
                         <div class="form-group">
                             <label for="">দেশ</label>
-                            <input type="text" class="form-control country" value="{{auth()->user()->userInfo()->country}}">
+                            <input type="text" class="form-control country" value="{{auth()->user()->userInfo()->country}}" name="country">
                         </div>
                         <div class="form-group">
                             <label for="">পোস্টাল কোড</label>
-                            <input type="text" class="form-control postalcode" value="{{auth()->user()->userInfo()->postalcode}}">
+                            <input type="text" class="form-control postalcode" value="{{auth()->user()->userInfo()->postalcode}}" name="postal">
                         </div>
                         <button type="submit" class="btn btn-warning btn-lg"><i class="fa fa-save"></i> Confirm Order</button>
                     </div>
                     @else
+                        @if(isset($cartlists))
+                            @foreach($cartlists as $cart)
+                                <input type="hidden" name="tempCartId[]" value="{{$cart['id']}}">
+                            @endforeach
+                        @else
+                            @foreach($cartlist_session as $cart)
+                                <input type="hidden" name="tempCartId[]" value="{{$cart['id']}}">
+                            @endforeach
+
+                        @endif
                      <div class="col-md-6">
                         <div class="form-group">
                             <label for="">নাম</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" name="name">
                         </div>
                         <div class="form-group">
                             <label for="">ফোন নাম্বার</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" name="phone">
                         </div>
                         <div class="form-group">
                             <label for="">ই-মেইল</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" name="email">
                         </div>
                     </div>
                     <div class="col-md-5 col-md-offset-1">
                         <legend>Address</legend>
                         <div class="form-group">
                             <label for="">ঠিকানা</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" name="address">
                         </div>
                         <div class="form-group">
                             <label for="">শহর</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" name="city">
                         </div>
                         <div class="form-group">
                             <label for="">দেশ</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" name="country">
                         </div>
                         <div class="form-group">
                             <label for="">পোস্টাল কোড</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" name="postal">
                         </div>
                         <button type="submit" class="btn btn-warning btn-lg"><i class="fa fa-save"></i> Confirm Order</button>
                     </div>

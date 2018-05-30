@@ -4,6 +4,11 @@ namespace Modules\Payment\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Modules\Payment\Repositories\InvoiceRepository;
+use Modules\Payment\Repositories\OrderRepository;
+use Modules\Payment\Services\InvoiceEloquent;
+use Modules\Payment\Services\OrderEloquent;
+
 
 class PaymentServiceProvider extends ServiceProvider
 {
@@ -35,7 +40,8 @@ class PaymentServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton(InvoiceRepository::class, InvoiceEloquent::class);
+        $this->app->singleton(OrderRepository::class, OrderEloquent::class);
     }
 
     /**

@@ -9,6 +9,7 @@ use Modules\Cart\Repositories\TempCartRepository;
 use Modules\Product\Repositories\ProductRepository;
 use Auth;
 use App\User;
+use Mail;
 
 class CheckoutController extends Controller
 {
@@ -85,6 +86,7 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
+
     }
 
     /**
