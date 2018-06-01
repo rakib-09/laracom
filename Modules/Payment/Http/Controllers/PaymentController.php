@@ -2,6 +2,8 @@
 
 namespace Modules\Payment\Http\Controllers;
 
+use App\Mail\NewOrder;
+use Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
@@ -59,26 +61,29 @@ class PaymentController extends Controller
             'city' => $request->input('city'),
             'country' => $request->input('country'),
             'postal_code' => $request->input('postal'),
-            'send_gift' => $gift
+            'send_gift' => $gift,
+            'created_at' => \Carbon\Carbon::now('Asia/Dhaka'),
         ]);
 
         $invoice_id = $this->invoice->create($insert_into_invoice);
 
-//        foreach ($request->input('tempCartId[]') as $key=> $value)
-//        {
-//
-//        }
-//
-//        $insert_into_Order = ([
-//        'invoice_id' =>
-//        'product_id' =>
-//        'product_price' =>
-//        'quantity' =>
-//        'sub_total' =>
-//        'total' =>
-//        ]);
+        foreach ($request->input('tempCartId') as $key => $value)
+        {
+            $tempCart = $this->temp_cart->getById($_POST['tempCartId'][$key]);
+            $insert_into_Order = ([
+                'invoice_id' => $invoice_id,
+                'product_id' => $tempCart->product_id,
+                'product_name' => $tempCart->product_name,
+                'product_price' => $tempCart->product_price,
+                'quantity' => $tempCart->product_quantity,
+                'created_at' => \Carbon\Carbon::now(CommonSetting::timezone())->toDateTimeString(),
+                ]);
 
-
+            $order_id = $this->order->create($insert_into_Order);
+            $this->temp_cart->delete($_POST['tempCartId'][$key]);
+        }
+        Mail::to($request->input('email'))->send(new NewOrder());
+        return view('payment::index', compact('invoice_id'));
     }
 
     /**

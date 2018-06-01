@@ -17,10 +17,9 @@ class CreateOrdersTable extends Migration
             $table->increments('id');
             $table->integer('invoice_id');
             $table->integer('product_id');
+            $table->string('product_name');
             $table->float('product_price',10,2);
             $table->integer('quantity');
-            $table->float('sub_total',10,2);
-            $table->float('total',10,2);
             $table->timestamps();
         });
     }
