@@ -2,6 +2,7 @@
 
 namespace Modules\Payment\Http\Controllers;
 
+use Mail;
 use App\Mail\NewOrder;
 use Carbon;
 use Illuminate\Http\Request;
@@ -66,6 +67,9 @@ class PaymentController extends Controller
         ]);
 
         $invoice_id = $this->invoice->create($insert_into_invoice);
+        $messages = array();
+        $subTotal = 0;
+        $order_id ='';
 
         foreach ($request->input('tempCartId') as $key => $value)
         {
@@ -76,13 +80,20 @@ class PaymentController extends Controller
                 'product_name' => $tempCart->product_name,
                 'product_price' => $tempCart->product_price,
                 'quantity' => $tempCart->product_quantity,
-                'created_at' => \Carbon\Carbon::now(CommonSetting::timezone())->toDateTimeString(),
+                'created_at' => \Carbon\Carbon::now('Asia/Dhaka'),
                 ]);
+            $subTotal += $tempCart->product_price;
 
             $order_id = $this->order->create($insert_into_Order);
             $this->temp_cart->delete($_POST['tempCartId'][$key]);
+            $messages[$key] = ([
+                'product_name' => $tempCart->product_name,
+                'product_price' => $tempCart->product_price,
+                'quantity' => $tempCart->product_quantity
+            ]);
         }
-        Mail::to($request->input('email'))->send(new NewOrder());
+        $url = url('/');
+        Mail::to($request->input('email'))->send(new NewOrder($url,$messages,$order_id,$request->input('name')));
         return view('payment::index', compact('invoice_id'));
     }
 

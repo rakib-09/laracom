@@ -8,38 +8,21 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use App\User;
 use Auth;
+use Hash;
 use Modules\Profile\Entities\Userinfo;
+use Modules\Payment\Entities\Invoice;
+use Modules\Payment\Repositories\InvoiceRepository;
+use Modules\Payment\Repositories\OrderRepository;
 
 class ProfileController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     * @return Response
-     */
-    public function index()
+    private $invoice, $order;
+
+    function __construct(InvoiceRepository $invoice, OrderRepository $order)
     {
-
-       // return view('profile::index');
+        $this->invoice = $invoice;
+        $this->order = $order;
     }
-
-    /**
-     * Show the form for creating a new resource.
-     * @return Response
-     */
-    public function create()
-    {
-        return view('profile::create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     * @param  Request $request
-     * @return Response
-     */
-    public function store(Request $request)
-    {
-    }
-
     /**
      * Show the specified resource.
      * @return Response
@@ -47,8 +30,9 @@ class ProfileController extends Controller
     public function show()
     {
         $userInformation = User::find(auth()->id());
-
-        return view('profile::index', compact('userInformation'));
+        $userInvoices = Invoice::all()->where('user_id', auth()->id());
+        dd($userInvoices->order_info());
+        //return view('profile::index', compact('userInformation','userInvoices'));
     }
 
     /**
@@ -65,7 +49,7 @@ class ProfileController extends Controller
             'city' => $request->input('city'),
             'country' => $request->input('country'),
             'postalcode' => $request->input('postalcode'),
-            'updated_at' => \Carbon\Carbon::now()
+            'updated_at' => \Carbon\Carbon::now('Asia/Dhaka')
         ]);
         return redirect('/profile/profileinfo');
     }
@@ -87,4 +71,18 @@ class ProfileController extends Controller
     {
     }
 
+    public function passwordChange()
+    {
+        $User = User::find(Auth::user()->id);
+        if(Hash::check($_POST['old_password'], $User['password'])){
+            $User->password = bcrypt($_POST['new_password']);
+            $User->save();
+            session()->flash('passwordChangeStatusYes', "Password Changed Sucessfully.");
+            return redirect()->back();
+        }
+        else {
+            session()->flash('passwordChangeStatusNo', "Old Password Does Not Match.");
+            return redirect()->back();
+        }
+    }
 }

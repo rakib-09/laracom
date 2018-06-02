@@ -4,5 +4,6 @@ Route::group(['middleware' => 'web', 'prefix' => 'profile', 'namespace' => 'Modu
 {
     Route::get('/profileinfo', 'ProfileController@show');
     Route::post('/updateinfo', 'ProfileController@edit');
+    Route::post('/passwordchange', 'ProfileController@passwordChange');
 
 });

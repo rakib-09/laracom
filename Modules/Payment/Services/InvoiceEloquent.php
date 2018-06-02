@@ -100,8 +100,14 @@ class InvoiceEloquent implements InvoiceRepository
         return $this->model->find($id)->delete();
     }
 
-    public function withOrder()
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function withOrder($id)
     {
-        return $this->model->all()->product_info;
+        return $this->model
+                    ->all()
+                    ->where('user_id', $id);
     }
 }
