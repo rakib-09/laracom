@@ -20,7 +20,6 @@
     <!-- Main Template styles -->
     <link rel="stylesheet" href="{{asset('css/styles.css')}}">
     <!-- IE 8 Fallback -->
-
     <!-- Your custom styles (blank file) -->
     <link rel="stylesheet" href="{{asset('css/mystyles.css')}}">
 
@@ -83,7 +82,7 @@
     <script src="{{asset('js/ionrangeslider.js')}}"></script>
     <script src="{{asset('js/icheck.js')}}"></script>
     <script src="{{asset('js/fotorama.js')}}"></script>
-    <script src="{{asset('js/card-payment.js')}}"></script>
+    {{--<script src="{{asset('js/card-payment.js')}}"></script>--}}
     <script src="{{asset('js/owl-carousel.js')}}"></script>
     <script src="{{asset('js/masonry.js')}}"></script>
     <script src="{{asset('js/nicescroll.js')}}"></script>

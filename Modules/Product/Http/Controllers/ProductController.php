@@ -54,6 +54,7 @@ class ProductController extends Controller
         $imagePath = $this->product->imageUpload($request->file('product_image'));
         $filePath = $this->product->fileUpload($request->file('product_pdf'));
         $attributes = array([
+            'category_id'=>$request->input('categorys'),
             'name' => $request->input('product_name_en'),
             'bangla_name'=> $request->input('product_name_bn'),
             'writer'=> $request->input('writer_name_en'),
@@ -79,8 +80,8 @@ class ProductController extends Controller
      */
     public function show()
     {
-
-        return view('product::show');
+        $product = $this->product->getById($_POST['id']);
+        return $product;
     }
 
     /**
@@ -99,12 +100,31 @@ class ProductController extends Controller
      */
     public function update(Request $request)
     {
+        $id = $request->input('product_id');
+        echo $id;
+
+        $attributes = array([
+            'name' => $request->input('name'),
+            'bangla_name'=> $request->input('bangla_name'),
+            'writer'=> $request->input('writer'),
+            'writer_bangla'=> $request->input('writer_bangla'),
+            'publication'=> $request->input('publication'),
+            'price'=> $request->input('price'),
+            'discount'=> $request->input('discount'),
+            'description'=> $request->input('product_description'),
+            'updated_At' => \Carbon\Carbon::now('Asia/Dhaka')
+        ]);
+        $this->product->update($id, $attributes);
+        return redirect('/product/ranking');
+
+
     }
 
 
     public function ranking()
     {
-        return view('product::ranking');
+        $productList = $this->product->getAll();
+        return view('product::ranking', compact('productList'));
     }
 
     /**

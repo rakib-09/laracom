@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{csrf_token()}}">
         <title>AdminPanel</title>
         <link rel="stylesheet" href="{{asset('css/boostrap.css')}}">
         <!-- Font Awesome styles (icons) -->
@@ -47,13 +48,13 @@
                 <div class="col-md-2 well">
                     <div class= "sidebar">
                         <div class="list-group">
-                            <a href="product/addproduct" class="list-group-item active"><i class="fa fa-plus-circle"></i> প্রোডাক্ট অ্যাড করুন</a>
-                            <a href="./ranking" class="list-group-item"><i class="fa fa-star"></i> প্রোডাক্ট র‍্যাঙ্কিং</a>
-                            <a href="#" class="list-group-item"><i class="fa fa-home"></i> হোমপেজ ডিজাইন</a>
-                            <a href="#" class="list-group-item"><i class="fa fa-user"></i> কাস্তমার লিস্ট</a>
-                            <a href="#" class="list-group-item"><i class="fa fa-shopping-cart"></i> অর্ডার হিস্টোরি</a>
-                            <a href="#" class="list-group-item"><i class="fa fa-list-ul"></i> অর্ডার স্ট্যাটাস</a>
-                            <a href="#" class="list-group-item"><i class="fa fa-money"></i> সর্বমোট বিক্রয় হিসাব</a>
+                            <a href="./addproduct" class="list-group-item addProduct active"><i class="fa fa-plus-circle"></i> প্রোডাক্ট অ্যাড করুন</a>
+                            <a href="./ranking" class="list-group-item ranking"><i class="fa fa-star"></i> প্রোডাক্ট র‍্যাঙ্কিং</a>
+                            <a href="#" class="list-group-item homePage"><i class="fa fa-home"></i> হোমপেজ ডিজাইন</a>
+                            <a href="#" class="list-group-item customerList"><i class="fa fa-user"></i> কাস্তমার লিস্ট</a>
+                            <a href="#" class="list-group-item orderHistory"><i class="fa fa-shopping-cart"></i> অর্ডার হিস্টোরি</a>
+                            <a href="#" class="list-group-item orderStatus"><i class="fa fa-list-ul"></i> অর্ডার স্ট্যাটাস</a>
+                            <a href="#" class="list-group-item totalSale"><i class="fa fa-money"></i> সর্বমোট বিক্রয় হিসাব</a>
                         </div>
                     </div>
                 </div>
