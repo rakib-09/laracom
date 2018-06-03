@@ -73,7 +73,6 @@
 
     <!-- Scripts queries -->
     <script src="{{asset('js/jquery.min.js')}}"></script>
-    <script src="{{asset('js/app.js')}}"></script>
     <script src="{{asset('js/boostrap.min.js')}}"></script>
     <script src="{{asset('js/countdown.min.js')}}"></script>
     <script src="{{asset('js/flexnav.min.js')}}"></script>

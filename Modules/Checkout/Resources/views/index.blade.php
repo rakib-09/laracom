@@ -77,10 +77,12 @@
                             @foreach($cartlists as $cart)
                                 <input type="hidden" name="tempCartId[]" value="{{$cart['id']}}">
                             @endforeach
+                            <input type="hidden" name="sub_total" value="{{$subTotal}}">
                         @else
                             @foreach($cartlist_session as $cart)
                                 <input type="hidden" name="tempCartId[]" value="{{$cart['id']}}">
                                 @endforeach
+                                <input type="hidden" name="sub_total" value="{{$subTotal}}">
                         @endif
                     <div class="col-md-6">
                         <p><label><input type="checkbox" id="gift" name="gift"> Send as a Gift.</label></p>

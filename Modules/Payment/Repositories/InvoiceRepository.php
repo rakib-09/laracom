@@ -22,6 +22,5 @@ interface InvoiceRepository
 
     function delete($id);
 
-    function withOrder($id);
 
 }

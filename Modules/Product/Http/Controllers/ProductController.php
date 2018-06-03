@@ -101,6 +101,12 @@ class ProductController extends Controller
     {
     }
 
+
+    public function ranking()
+    {
+        return view('product::ranking');
+    }
+
     /**
      * Remove the specified resource from storage.
      * @return Response

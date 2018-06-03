@@ -23,7 +23,9 @@ class CreateInvoicesTable extends Migration
             $table->string('city');
             $table->string('country');
             $table->string('postal_code');
+            $table->Float('Sub_total',10,2);
             $table->tinyInteger('send_gift');
+            $table->string('status');
             $table->timestamps();
         });
     }

@@ -45,7 +45,7 @@ class OrderEloquent implements OrderRepository
      */
     public function getAllById($id = "")
     {
-        return $this->model->all()->where('user_id', $id);
+        return $this->model->all()->where('invoice_id', $id);
     }
 
     /**

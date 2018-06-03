@@ -47,8 +47,8 @@
                 <div class="col-md-2 well">
                     <div class= "sidebar">
                         <div class="list-group">
-                            <a href="/addproduct" class="list-group-item active"><i class="fa fa-plus-circle"></i> প্রোডাক্ট অ্যাড করুন</a>
-                            <a href="#" class="list-group-item"><i class="fa fa-star"></i> প্রোডাক্ট র‍্যাঙ্কিং</a>
+                            <a href="product/addproduct" class="list-group-item active"><i class="fa fa-plus-circle"></i> প্রোডাক্ট অ্যাড করুন</a>
+                            <a href="./ranking" class="list-group-item"><i class="fa fa-star"></i> প্রোডাক্ট র‍্যাঙ্কিং</a>
                             <a href="#" class="list-group-item"><i class="fa fa-home"></i> হোমপেজ ডিজাইন</a>
                             <a href="#" class="list-group-item"><i class="fa fa-user"></i> কাস্তমার লিস্ট</a>
                             <a href="#" class="list-group-item"><i class="fa fa-shopping-cart"></i> অর্ডার হিস্টোরি</a>

@@ -30,9 +30,17 @@ class ProfileController extends Controller
     public function show()
     {
         $userInformation = User::find(auth()->id());
-        $userInvoices = Invoice::all()->where('user_id', auth()->id());
-        dd($userInvoices->order_info());
-        //return view('profile::index', compact('userInformation','userInvoices'));
+        $userInvoices = $this->invoice->getAllById(auth()->id());
+        return view('profile::index', compact('userInformation','userInvoices'));
+    }
+
+    public function order()
+    {
+        $invoice_id = $_POST['id'];
+        $details =  $this->order->getAllById($invoice_id);
+
+        return $details;
+
     }
 
     /**

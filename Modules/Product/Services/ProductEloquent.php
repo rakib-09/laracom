@@ -105,7 +105,7 @@ class ProductEloquent implements ProductRepository
         $img = Image::make($image->getRealPath());
         $img->resize(200, 300);
         $img->stream('jpg',90); // <-- Key point
-        Storage::disk('local')->put('images/products'.'/'.$fileName, $img, 'public');
+        Storage::disk('local')->put('public/images/products'.'/'.$fileName, $img, 'public');
         return $fileName;
     }
 

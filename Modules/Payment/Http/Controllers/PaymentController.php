@@ -62,6 +62,8 @@ class PaymentController extends Controller
             'city' => $request->input('city'),
             'country' => $request->input('country'),
             'postal_code' => $request->input('postal'),
+            'Sub_total' => $request->input('sub_total'),
+            'status' => 'Order Placed',
             'send_gift' => $gift,
             'created_at' => \Carbon\Carbon::now('Asia/Dhaka'),
         ]);

@@ -78,26 +78,71 @@
                     <table class="table table-order">
                         <thead>
                         <tr>
-                            <th>Item</th>
-                            <th>Name</th>
-                            <th>Qty</th>
-                            <th>Price</th>
-                            <th>Date</th>
+                            <th>Invoice No.</th>
+                            <th>Total Price</th>
+                            <th>Status</th>
+                            <th>Send As a Gift</th>
+                            <th>Order At</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($userInvoices as $invoice)
                         <tr>
-                            <td class="table-order-img">
-                                <a href="#">
-                                    <img src="img/70x70.png" alt="Image Alternative text" title="AMaze" />
-                                </a>
+                            <td>{{$invoice-> id}}</td>
+                            <td>{{$invoice-> Sub_total}}</td>
+                            <td>{{$invoice-> status}}</td>
+                            <td>@if($invoice->send_gift == 0)
+                                    NO
+                                @else
+                                    YES
+                                @endif
                             </td>
-                            <td><a href="#">{{$invoice->order_info()->product_name}}</a>
-                            </td>
-                            <td>1</td>
-                            <td>$220</td>
-                            <td>7/12/2014</td>
+                            <td>{{$invoice->created_at->format('d-m-Y')}}</td>
+                            <td><!-- Button trigger modal -->
+                                <button type="button" id="{{$invoice->id}}" class="btn btn-primary seeDetails" >
+                                    See Details
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="invoice-details" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Invoice Details</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <table class="table table-order popupTable">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Qty</th>
+                                                        <th>Price</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="modal-footer">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div></td>
+                            {{--<td class="table-order-img">--}}
+                                {{--<a href="#">--}}
+                                    {{--<img src="img/70x70.png" alt="Image Alternative text" title="AMaze" />--}}
+                                {{--</a>--}}
+                            {{--</td>--}}
+                            {{--<td><a href="#">{{$invoice->order_info()->product_name}}</a>--}}
+                            {{--</td>--}}
+                            {{--<td>1</td>--}}
+                            {{--<td>$220</td>--}}
+                            {{--<td>7/12/2014</td>--}}
                         </tr>
                         @endforeach
                         </tbody>

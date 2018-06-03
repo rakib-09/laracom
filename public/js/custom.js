@@ -446,5 +446,34 @@ $(document).ready(function(){
            $(".postalcode").val(postalcode);
        }
     });
+    
+    $("button.seeDetails").on('click', function () {
+        $(".popupTable tbody").html("");
+        var id = $(this).attr('id');
+        var table = "";
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            url: '/profile/order',
+            type:'POST',
+            data:{id: id},
+
+            success: function (data) {
+                $.each(data, function(index, element) {
+                    table +="<tr>" +
+                        "<td>" + element.product_name +"</td>" +
+                        "<td>" + element.quantity +"</td>" +
+                        "<td>" + element.product_price +"</td><tr>";
+
+                });
+              $(".popupTable tbody").append(table);
+                $('#invoice-details').modal('show');
+            }
+        });
+    });
 
 });
