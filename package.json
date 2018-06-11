@@ -22,6 +22,6 @@
   "dependencies": {
     "autocomplete.js": "^0.29.0",
     "vue": "^2.5.13",
-    "vue-instantsearch": "^1.4.0"
+    "vue-instantsearch": "^1.7.0"
   }
 }

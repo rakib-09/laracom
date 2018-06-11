@@ -4,23 +4,24 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "1d01e12ef1346658fede302fe30c9aa0",
+    "content-hash": "0f9eb00a8a86dc444d2f8266d001cb72",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
-            "version": "1.25.1",
+            "version": "1.26.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/algolia/algoliasearch-client-php.git",
-                "reference": "805021ea52630756d2da01d482309a2fdc47d3c0"
+                "reference": "aeb8ab5df50fef94acbee8168382da80539acc9a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/algolia/algoliasearch-client-php/zipball/805021ea52630756d2da01d482309a2fdc47d3c0",
-                "reference": "805021ea52630756d2da01d482309a2fdc47d3c0",
+                "url": "https://api.github.com/repos/algolia/algoliasearch-client-php/zipball/aeb8ab5df50fef94acbee8168382da80539acc9a",
+                "reference": "aeb8ab5df50fef94acbee8168382da80539acc9a",
                 "shasum": ""
             },
             "require": {
+                "ext-curl": "*",
                 "ext-mbstring": "*",
                 "php": ">=5.3"
             },
@@ -54,7 +55,7 @@
             ],
             "description": "Algolia Search API Client for PHP",
             "homepage": "https://github.com/algolia/algoliasearch-client-php",
-            "time": "2018-03-02T13:24:10+00:00"
+            "time": "2018-06-07T12:28:42+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1080,16 +1081,16 @@
         },
         {
             "name": "laravel/scout",
-            "version": "v4.0.1",
+            "version": "v4.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/scout.git",
-                "reference": "28a88fa764cd2bf0225e427b067a024f7cbb5d4f"
+                "reference": "f1b5d65a7d4a70bafaba7ec996176e95341c44ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/scout/zipball/28a88fa764cd2bf0225e427b067a024f7cbb5d4f",
-                "reference": "28a88fa764cd2bf0225e427b067a024f7cbb5d4f",
+                "url": "https://api.github.com/repos/laravel/scout/zipball/f1b5d65a7d4a70bafaba7ec996176e95341c44ec",
+                "reference": "f1b5d65a7d4a70bafaba7ec996176e95341c44ec",
                 "shasum": ""
             },
             "require": {
@@ -1112,7 +1113,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0-dev"
+                    "dev-master": "4.0-dev"
                 },
                 "laravel": {
                     "providers": [
@@ -1141,7 +1142,7 @@
                 "laravel",
                 "search"
             ],
-            "time": "2018-02-12T14:35:52+00:00"
+            "time": "2018-05-24T13:35:34+00:00"
         },
         {
             "name": "laravel/tinker",
