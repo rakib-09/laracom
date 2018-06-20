@@ -183,9 +183,9 @@ $(".cart-item-minus").click(function() {
 
 
 // Card form
-$('.form-group-cc-number input').payment('formatCardNumber');
-$('.form-group-cc-date input').payment('formatCardExpiry');
-$('.form-group-cc-cvc input').payment('formatCardCVC');
+// $('.form-group-cc-number input').payment('formatCardNumber');
+// $('.form-group-cc-date input').payment('formatCardExpiry');
+// $('.form-group-cc-cvc input').payment('formatCardCVC');
 
 
 // Google map

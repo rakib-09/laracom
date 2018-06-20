@@ -78,7 +78,7 @@ class ProductEloquent implements ProductRepository
      */
     public function update($id, array $attributes)
     {
-        return $this->model->find($id)->update($attributes);
+        return $this->model->where('id',$id)->update($attributes[0]);
     }
 
     /**

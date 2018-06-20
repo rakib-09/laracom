@@ -50,7 +50,7 @@
                         <div class="list-group">
                             <a href="./addproduct" class="list-group-item addProduct active"><i class="fa fa-plus-circle"></i> প্রোডাক্ট অ্যাড করুন</a>
                             <a href="./ranking" class="list-group-item ranking"><i class="fa fa-star"></i> প্রোডাক্ট র‍্যাঙ্কিং</a>
-                            <a href="#" class="list-group-item homePage"><i class="fa fa-home"></i> হোমপেজ ডিজাইন</a>
+                            <a href="./homepage" class="list-group-item homePage"><i class="fa fa-home"></i> হোমপেজ ডিজাইন</a>
                             <a href="#" class="list-group-item customerList"><i class="fa fa-user"></i> কাস্তমার লিস্ট</a>
                             <a href="#" class="list-group-item orderHistory"><i class="fa fa-shopping-cart"></i> অর্ডার হিস্টোরি</a>
                             <a href="#" class="list-group-item orderStatus"><i class="fa fa-list-ul"></i> অর্ডার স্ট্যাটাস</a>

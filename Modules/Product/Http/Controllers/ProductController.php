@@ -42,6 +42,17 @@ class ProductController extends Controller
         return view('product::create');
     }
 
+    public function ranking()
+    {
+        $productList = $this->product->getAll();
+        return view('product::ranking', compact('productList'));
+    }
+
+    public function homePageDesign()
+    {
+        return view('product::homepage');
+    }
+
     /**
      * Store a newly created resource in storage.
      * @param  Request $request
@@ -111,7 +122,7 @@ class ProductController extends Controller
             'publication'=> $request->input('publication'),
             'price'=> $request->input('price'),
             'discount'=> $request->input('discount'),
-            'description'=> $request->input('product_description'),
+            'description'=> $request->input('description'),
             'updated_At' => \Carbon\Carbon::now('Asia/Dhaka')
         ]);
         $this->product->update($id, $attributes);
@@ -121,11 +132,6 @@ class ProductController extends Controller
     }
 
 
-    public function ranking()
-    {
-        $productList = $this->product->getAll();
-        return view('product::ranking', compact('productList'));
-    }
 
     /**
      * Remove the specified resource from storage.

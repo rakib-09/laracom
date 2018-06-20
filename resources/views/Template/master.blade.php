@@ -41,7 +41,7 @@
                         </label>
                         <ul class="search-area-division search-area-division-input">
                             <ais-index app-id="{{ config('scout.algolia.id') }}"
-                                       api-key="{{ env('ALGOLIA_SEARCH') }}"
+                                       api-key="{{ env('ALGOLIA_SECRET') }}"
                                        index-name="products">
                                 <ais-input class="form-control dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" type="text" placeholder="বইয়ের নাম অথবা লেখকের নাম লিখুন" id="search-index"></ais-input>
                                 <ul class="dropdown-menu">
