@@ -27,7 +27,7 @@ class CreateHomepagesTable extends Migration
             $table->string('promote3');
             $table->string('writeup3');
             $table->string('link3');
-            $table->json('weekly');
+            $table->string('weekly');
             $table->timestamps();
         });
     }

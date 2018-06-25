@@ -6,11 +6,12 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\Product\Repositories\ProductRepository;
+use Modules\Product\Repositories\HomepageRepository;
 use Carbon;
 
 class ProductController extends Controller
 {
-    private $product;
+    private $product, $homepage;
 
     /**
      * initiate ProductRepository to product.
@@ -18,9 +19,10 @@ class ProductController extends Controller
      * @param ProductRepository $product
      */
 
-    public function __construct(ProductRepository $product)
+    public function __construct(ProductRepository $product, HomepageRepository $homepage)
     {
         $this->product = $product;
+        $this->homepage = $homepage;
     }
 
     /**
@@ -56,7 +58,31 @@ class ProductController extends Controller
 
     public function updateHomePage(Request $request)
     {
-        print_r($request->all());
+        $slider1 = $this->homepage->imageSlider($request->file('slider1'));
+        $slider2 = $this->homepage->imageSlider($request->file('slider2'));
+        $slider3 = $this->homepage->imageSlider($request->file('slider3'));
+        $promote1 = $this->homepage->imagePromote($request->file('promote1'));
+        $promote2 = $this->homepage->imagePromote($request->file('promote2'));
+        $promote3 = $this->homepage->imagePromote($request->file('promote3'));
+        $weekly = json_encode($request->input('weekly'));
+
+        $attributes = array([
+            'slider1'=> $slider1,
+            'slider2' => $slider2,
+            'slider3'=> $slider3,
+            'promote1'=> $promote1,
+            'writeup1'=> $request->input('write1'),
+            'link1'=> $request->input('link1'),
+            'promote2'=> $promote2,
+            'writeup2'=> $request->input('write2'),
+            'link2'=> $request->input('link2'),
+            'promote3'=> $promote3,
+            'writeup3'=> $request->input('write3'),
+            'link3'=> $request->input('link3'),
+            'weekly'=> $weekly,
+            'created_At' => \Carbon\Carbon::now('Asia/Dhaka')
+        ]);
+        $this->homepage->create($attributes);
     }
 
     /**

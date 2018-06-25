@@ -31,7 +31,7 @@
                     <input type="text" class="form-control" name="link1" placeholder="link for 1" required>
 
                 </div>
-                </div>
+            </div>
             <div class="form-group">
                 <div class="col-md-4">
                     <h4>Promote Image 2 </h4>
