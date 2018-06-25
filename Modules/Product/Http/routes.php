@@ -7,6 +7,7 @@ Route::group(['middleware' => 'web', 'prefix' => 'product', 'namespace' => 'Modu
     Route::post('/addproduct', 'ProductController@store');
     Route::get('/ranking', 'ProductController@ranking');
     Route::get('/homepage', 'ProductController@homePageDesign');
+    Route::post('/homepage', 'ProductController@updateHomePage');
     Route::post('/show', 'ProductController@show');
     Route::post('/update', 'ProductController@update');
 });

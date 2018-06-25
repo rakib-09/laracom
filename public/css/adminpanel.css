@@ -64,9 +64,8 @@ li i {padding-right:10px;}
 .stats-box:hover {background:#f2f2f2;color:#dd0000;}
 /*********** My interests checkbox *********/
 /*Checkboxes styles*/
-input[type="checkbox"] { display: none; }
 
-input[type="checkbox"] + label {
+input[type="checkbox"], input[type="checkbox"] + label {
     display: block;
     position: relative;
     padding-left: 35px;
@@ -77,6 +76,7 @@ input[type="checkbox"] + label {
     -moz-user-select: none;
     -ms-user-select: none;
     background:#f2f2f2;
+    height: 25px;
 
 
 }

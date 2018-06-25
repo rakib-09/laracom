@@ -50,7 +50,13 @@ class ProductController extends Controller
 
     public function homePageDesign()
     {
-        return view('product::homepage');
+        $productList = $this->product->getAll();
+        return view('product::homepage', compact('productList'));
+    }
+
+    public function updateHomePage(Request $request)
+    {
+        print_r($request->all());
     }
 
     /**
@@ -58,8 +64,6 @@ class ProductController extends Controller
      * @param  Request $request
      * @return Response
      */
-
-
     public function store(Request $request)
     {
         $imagePath = $this->product->imageUpload($request->file('product_image'));
