@@ -124,25 +124,25 @@
     <div class="row row-wrap">
         <div class="col-md-4">
             <div class="product-banner">
-                <img src="img/800x600.png" alt="Image Alternative text" title="Gamer Chick" />
+                <img src="<?php echo asset("storage/images/homepage/$homepage_all->promote1")?>" alt="Image Alternative text" />
                 <div class="product-banner-inner">
-                    <h5>Playstation Accsories</h5><a class="btn btn-sm btn-white btn-ghost">Explore Now</a>
+                    <h5>{{$homepage_all->writeup1}}</h5><a href="{{$homepage_all->link1}}" class="btn btn-sm btn-white btn-ghost">Explore Now</a>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="product-banner">
-                <img src="img/800x600.png" alt="Image Alternative text" title="Urbex Esch/Lux with Laney and Laaaaag" />
+                <img src="<?php echo asset("storage/images/homepage/$homepage_all->promote2")?>" alt="Image Alternative text"  />
                 <div class="product-banner-inner">
-                    <h5>Canon Cameras</h5><a class="btn btn-sm btn-white btn-ghost">Explore Now</a>
+                    <h5>{{$homepage_all->writeup2}}</h5><a href="{{$homepage_all->link2}}" class="btn btn-sm btn-white btn-ghost">Explore Now</a>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="product-banner">
-                <img src="img/800x600.png" alt="Image Alternative text" title="AMaze" />
+                <img src="<?php echo asset("storage/images/homepage/$homepage_all->promote3")?>" alt="Image Alternative text" />
                 <div class="product-banner-inner">
-                    <h5>New Glass Collections</h5><a class="btn btn-sm btn-white btn-ghost">Explore Now</a>
+                    <h5>{{$homepage_all->writeup3}}</h5><a href="{{$homepage_all->link3}}" class="btn btn-sm btn-white btn-ghost">Explore Now</a>
                 </div>
             </div>
         </div>

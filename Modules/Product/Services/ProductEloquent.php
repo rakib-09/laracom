@@ -101,7 +101,7 @@ class ProductEloquent implements ProductRepository
      */
     public function imageUpload($image)
     {
-        $fileName   = time() . '.' . $image->getClientOriginalExtension();
+        $fileName   = time() .rand(0,100). '.' . $image->getClientOriginalExtension();
         $img = Image::make($image->getRealPath());
         $img->resize(200, 300);
         $img->stream('jpg',90); // <-- Key point

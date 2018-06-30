@@ -39,7 +39,7 @@ class HomepageEloquent implements HomepageRepository
      */
     public function getAll()
     {
-        return $this->model->all();
+        return $this->model->first();
     }
 
     /**
@@ -102,7 +102,7 @@ class HomepageEloquent implements HomepageRepository
      */
     public function imagePromote($image)
     {
-        $fileName   = time() . '.' . $image->getClientOriginalExtension();
+        $fileName   = time() .'-'.rand(0,100).'.' . $image->getClientOriginalExtension();
         $img = Image::make($image->getRealPath());
         $img->resize(800, 600);
         $img->stream('jpg',90); // <-- Key point
@@ -119,7 +119,7 @@ class HomepageEloquent implements HomepageRepository
      */
     public function imageSlider($image)
     {
-        $fileName   = time() . '.' . $image->getClientOriginalExtension();
+        $fileName   = time().'-'.rand(0,100). '.' . $image->getClientOriginalExtension();
         $img = Image::make($image->getRealPath());
         $img->resize(1200, 500);
         $img->stream('jpg',90); // <-- Key point

@@ -1,7 +1,8 @@
 <div class="top-area">
     <div class="owl-carousel owl-slider" id="owl-carousel-slider" data-inner-pagination="true" data-white-pagination="true">
         <div class="bg-holder">
-            <img src="{{asset('img/1200x480.png')}}" alt="Image Alternative text" title="Branding  iPad Interactive Design" />
+
+            <img src="<?php echo asset("storage/images/homepage/$homepage_all->slider1")?>" alt="Image Alternative text" title="Branding  iPad Interactive Design" />
             <div class="vert-center text-white text-center slider-caption">
                 <h2 class="text-uc">New Bloke Collection</h2>
                 <p class="text-bigger">Egestas et est aenean ipsum lorem fringilla</p>
@@ -9,7 +10,7 @@
             </div>
         </div>
         <div class="bg-holder">
-            <img src="{{asset('img/1200x480.png')}}" alt="Image Alternative text" title="Hot mixer" />
+            <img src="<?php echo asset("storage/images/homepage/$homepage_all->slider2")?>" alt="Image Alternative text" title="Hot mixer" />
             <div class="vert-center text-white text-center slider-caption">
                 <h2 class="text-uc">Modern DJ Sets</h2>
                 <p class="text-bigger">Justo cursus ridiculus erat et varius est</p>
@@ -17,7 +18,7 @@
             </div>
         </div>
         <div class="bg-holder">
-            <img src="{{asset('img/1200x480.png')}}" alt="Image Alternative text" title="iPhone 5 iPad mini iPad 3" />
+            <img src="<?php echo asset("storage/images/homepage/$homepage_all->slider3")?>" alt="Image Alternative text" title="iPhone 5 iPad mini iPad 3" />
             <div class="vert-center text-white text-center slider-caption">
                 <h2 class="text-uc">Gatgets Giveaway</h2>
                 <p class="text-bigger">Erat lacus praesent montes aptent eget venenatis</p>
